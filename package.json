@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bootstrap-icons": "^1.7.2",
+    "react-backdrop-filter": "^2.1.0"
+  }
+}
