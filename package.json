@@ -27,7 +27,8 @@
     "morgan": "^1.10.0",
     "passport": "^0.5.0",
     "passport-google-oauth": "^2.0.0",
-    "react-backdrop-filter": "^2.1.0"
+    "react-backdrop-filter": "^2.1.0",
+    "react-reveal": "^1.2.2"
   },
   "bugs": {
     "url": "https://github.com/arundhati-bala/nomad/issues"
