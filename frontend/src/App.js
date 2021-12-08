@@ -8,7 +8,7 @@ import Home from './Screens/Home'
 
 const App = () => {
   return (
-    <div style={{ backgroundImage: `url(${background})` }}>
+    <div style={{ backgroundImage: `url(${background})` , backgroundAttachment:'fixed'}}>
     <Router>
     <Header />
     <main>
