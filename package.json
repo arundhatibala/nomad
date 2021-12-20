@@ -20,15 +20,16 @@
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.15",
+    "mongoose": "^6.1.2",
     "morgan": "^1.10.0",
-    "passport": "^0.5.0",
+    "passport": "^0.5.2",
     "passport-google-oauth": "^2.0.0",
     "react-animate-on-scroll": "^2.1.5",
     "react-backdrop-filter": "^2.1.0",
+    "react-redux": "^7.2.6",
     "react-reveal": "^1.2.2"
   },
   "bugs": {
@@ -36,7 +37,7 @@
   },
   "homepage": "https://github.com/arundhati-bala/nomad#readme",
   "devDependencies": {
-    "concurrently": "^6.4.0",
+    "concurrently": "^6.5.1",
     "nodemon": "^2.0.15"
   }
 }
