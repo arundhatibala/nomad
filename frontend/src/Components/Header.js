@@ -9,7 +9,7 @@ const Header = () => {
         <header style= {{backgroundColor: 'rgba(255, 255, 255, 0)'}}>
             <Navbar collapseOnSelect expand="lg" variant="dark" style = {{padding: '10px 5px'}}>
   <Container style = {{padding: '0px 12px'}}>
-  <Navbar.Brand style ={{fontFamily:'Readex Pro', fontSize: '20px'}}>nomad.</Navbar.Brand>
+  <Navbar.Brand href= "/" style ={{fontFamily:'Readex Pro', fontSize: '20px'}}>nomad.</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
@@ -17,8 +17,8 @@ const Header = () => {
       <Nav.Link href = "/#contact">contact.</Nav.Link>
     </Nav>
     <Nav>
-    <Nav.Link href = "/explore"className = "bi bi-search"></Nav.Link>
-      <Nav.Link href = "/profile"className = "bi bi-person-circle"></Nav.Link>
+    <Nav.Link href = "/explore" className = "bi bi-search"></Nav.Link>
+      <Nav.Link href = "/profile" className = "bi bi-person-circle"></Nav.Link>
     </Nav>
   </Navbar.Collapse>
   </Container>
