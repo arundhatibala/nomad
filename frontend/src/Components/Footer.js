@@ -19,13 +19,13 @@ const Footer = () => {
                 <Row>
                     <Col sm = {6} md ={3}>
                         <h5>destinations.</h5>
-                            <a style = {{textDecoration:"none"}} href="/amsterdam">Amsterdam</a>
+                            <a style = {{textDecoration:"none"}} href="/explore/amsterdam">Amsterdam</a>
                             <br></br>
-                            <a style = {{textDecoration:"none"}} href="/buenosaires">Buenos Aires</a>
+                            <a style = {{textDecoration:"none"}} href="/explore/buenosaires">Buenos Aires</a>
                             <br></br>
-                            <a style = {{textDecoration:"none"}} href="/newyorkcity">New York City</a>
+                            <a style = {{textDecoration:"none"}} href="/explore/newyorkcity">New York City</a>
                             <br></br>
-                            <a style = {{textDecoration:"none"}} href="/tokyo">Tokyo</a>
+                            <a style = {{textDecoration:"none"}} href="/explore/tokyo">Tokyo</a>
                     </Col>
                     <Col sm = {6} md ={3}>
                         <h5>social.</h5>

@@ -37,6 +37,7 @@ const Register = () => {
     // }
     return (
         <FormContainer>
+            <br></br>
             <h1>Sign Up</h1>
             {/* {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}

@@ -18,7 +18,7 @@ const Header = () => {
     </Nav>
     <Nav>
     <Nav.Link href = "/explore" className = "bi bi-search"></Nav.Link>
-      <Nav.Link href = "/profile" className = "bi bi-person-circle"></Nav.Link>
+      <Nav.Link href = "/login" className = "bi bi-person-circle"></Nav.Link>
     </Nav>
   </Navbar.Collapse>
   </Container>
