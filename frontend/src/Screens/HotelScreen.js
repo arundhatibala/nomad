@@ -8,62 +8,62 @@ import Rating from '../Components/Rating'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import Hotel from '../Components/Hotel'
-// import { listhotelDetails, createhotelReview } from '../actions/hotelActions'
-// import { listhotels } from '../actions/hotelActions'
-// import { hotel_CREATE_REVIEW_RESET } from '../constants/hotelConstants'
+import { listhotelDetails, createhotelReview } from '../actions/hotelActions'
+import { listhotels } from '../actions/hotelActions'
+import { hotel_CREATE_REVIEW_RESET } from '../constants/hotelConstants'
 
 
 const hotelScreen = ({ match }) => {
-    // const [qty, setQty] = useState(1)
-    // const [rating, setRating] = useState(0)
-    // const [comment, setComment] = useState('')
+    const [qty, setQty] = useState(1)
+    const [rating, setRating] = useState(0)
+    const [comment, setComment] = useState('')
 
-    // const [activeItemIndex, setActiveItemIndex] = useState(0);
-    // const chevronWidth = 40;
+    const [activeItemIndex, setActiveItemIndex] = useState(0);
+    const chevronWidth = 40;
 
-    // const { id } = useParams()
-    // const dispatch = useDispatch()
-    // const hotelDetails = useSelector((state) => state.hotelDetails)
-    // const hotelList = useSelector(state => state.hotelList)
-    // const { loading, error, hotels } = hotelList
-    // const { hotel } = hotelDetails
+    const { id } = useParams()
+    const dispatch = useDispatch()
+    const hotelDetails = useSelector((state) => state.hotelDetails)
+    const hotelList = useSelector(state => state.hotelList)
+    const { loading, error, hotels } = hotelList
+    const { hotel } = hotelDetails
 
-    // const userLogin = useSelector(state => state.userLogin)
-    // const { userInfo } = userLogin
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
 
-    // const settings = {
-    //     dots: true,
-    //     infinite: true,
-    //     speed: 500,
-    //     slidesToShow: 4,
-    //     slidesToScroll: 2
-    // }
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 2
+    }
 
-    // const hotelReviewCreate = useSelector(state => state.hotelReviewCreate)
-    // const { success: successhotelReview, error: errorhotelReview } = hotelReviewCreate
+    const hotelReviewCreate = useSelector(state => state.hotelReviewCreate)
+    const { success: successhotelReview, error: errorhotelReview } = hotelReviewCreate
 
-    // useEffect(() => {
-    //     window.scrollTo(0,0)
-    //     dispatch(listhotels())
-    // }, [dispatch])
+    useEffect(() => {
+        window.scrollTo(0,0)
+        dispatch(listhotels())
+    }, [dispatch])
 
-    // useEffect(() => {
-    //     if (successhotelReview) {
-    //         alert('Review Submitted!')
-    //         setRating(0)
-    //         setComment('')
-    //         dispatch({ type: hotel_CREATE_REVIEW_RESET })
-    //     }
-    //     dispatch(listhotelDetails(id))
-    // }, [dispatch, match, successhotelReview])
+    useEffect(() => {
+        if (successhotelReview) {
+            alert('Review Submitted!')
+            setRating(0)
+            setComment('')
+            dispatch({ type: hotel_CREATE_REVIEW_RESET })
+        }
+        dispatch(listhotelDetails(id))
+    }, [dispatch, match, successhotelReview])
 
-    // const submitHandler = (e) => {
-    //     e.preventDefault()
-    //     dispatch(createhotelReview(id, {
-    //         rating,
-    //         comment
-    //     }))
-    // }
+    const submitHandler = (e) => {
+        e.preventDefault()
+        dispatch(createhotelReview(id, {
+            rating,
+            comment
+        }))
+    }
 
     let navigate = useNavigate()
 
