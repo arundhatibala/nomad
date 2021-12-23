@@ -6,9 +6,10 @@ import Rating from './Rating'
 const Hotel = ({hotel}) => {
     return (
         <Card className = 'my-2 p2 rounded'>
-           {/* <a href = {`/hotel/${hotel._id}`}>*/}
+           <a href = {`/hotel/${hotel._id}`}>
         <Card.Img src = {hotel.image_room} variant = "top" />
-        {/* </a>  */}
+        </a> 
+        <a style = {{textDecoration:"none"}} href = {`/hotel/${hotel._id}`}>
         <Card.Body>
         <Card.Title as = "h4">
             {hotel.name}
@@ -24,6 +25,7 @@ const Hotel = ({hotel}) => {
         </Card.Text>
         <Card.Text as ='h6' style = {{fontWeight: 'normal'}} >&#8377;{hotel.price} per night</Card.Text>
         </Card.Body>
+        </a>
         </Card>
     )
 }
