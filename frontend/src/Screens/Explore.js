@@ -6,8 +6,8 @@ import Hotel from '../Components/Hotel'
 //Displays all hotels and uses fuzzy search, location filter and sorting
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { listhotels } from '../actions/hotelActions'
+import { useDispatch, useSelector } from 'react-redux'
+//import { listhotels } from '../actions/hotelActions'
 import { Form } from 'react-bootstrap'  
 import Fuse from "fuse.js"
 
@@ -16,9 +16,9 @@ const Explore = () => {
     const hotelList = useSelector(state => state.hotelList)
     const { loading, error, hotels } = hotelList
 
-    useEffect(() => {
-        dispatch(listhotels())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(listhotels())
+    // }, [dispatch])
 
     const [query, updateQuery] = useState('')
     const [location, setLocation] = useState('All Categories')
@@ -44,10 +44,10 @@ const Explore = () => {
         sortResult = catResults.reverse()
     }
 
-    // console.log(hotelResults)
-    //  const onSearch = ({ currentTarget }) => {
-    //     updateQuery(currentTarget.value);
-    //   }
+    console.log(hotelResults)
+     const onSearch = ({ currentTarget }) => {
+        updateQuery(currentTarget.value);
+      }
     // // const [hotels, setHotels] = useState([])
     // // useEffect (() => {
     // //     const fetchHotels = async () => {

@@ -1,7 +1,7 @@
 import express from 'express'
 import asyncHandler from 'express-async-handler'
 import Hotel from '../models/hotelModel.js'
-const router = express.Router
+const router = express.Router()
 
 //Fetch all hotels
 //GET /api/hotels
@@ -19,7 +19,8 @@ router.get('/:id', asyncHandler(async (req,res) => {
     if(hotel){
         res.json(hotel)
     } else {
-        res.status(404).json({message: 'Hotel not found'})
+        res.status(404)
+        throw new Error('Hotel Not Found!')
     }
 }))
 
