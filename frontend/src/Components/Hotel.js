@@ -16,8 +16,11 @@ const Hotel = ({hotel}) => {
         <Card.Text as ="h5" style = {{fontWeight:'normal'}}>
             {hotel.location}
         </Card.Text>
+        <Card.Text style = {{fontWeight:'normal', color:"#cce0ff", fontSize: "15px"}}>
+            {hotel.amenities}
+        </Card.Text>
         <Card.Text as = "h6">
-                    <Rating value = {hotel.rating} color = '#ffffff' />
+                    <Rating value = {hotel.rating} color = '#e6ccff' />
         </Card.Text>
         <Card.Text as ='h6' style = {{fontWeight: 'normal'}} >&#8377;{hotel.price} per night</Card.Text>
         </Card.Body>

@@ -66,7 +66,7 @@ const Explore = () => {
               <Form.Control
           type = "text"
         //   value = {query}
-          placeholder = "Search by name, amenity, location..."
+          placeholder = "Search by name, amenity..."
         //   onChange = {onSearch}
           >
           </Form.Control>
@@ -98,6 +98,7 @@ const Explore = () => {
         </Form.Select>
           </Col>
           </Row>
+          <br></br>
         {/* {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> :  */}
                 <Row>
                     {hotels.map(hotel => (
