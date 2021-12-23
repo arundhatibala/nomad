@@ -318,7 +318,7 @@ const hotels = [
     suite_qty: 2,
     tag: "",
     address: "Fray Justo Sta. María de Oro 1828, C1414 CABA, Argentina",
-    lat: "-34.5855496-58.4323383",
+    lat: -34.5855496,
     long: -58.4323383,
     phone: "(+54) 11 2060 9011"
   },
