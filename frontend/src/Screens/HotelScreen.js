@@ -1,8 +1,9 @@
 import React from 'react'
 import {Link, useParams} from 'react-router-dom'
-import {Row, Col, Button, Image, ListGroup, Card, Carousel, CarouselItem, Breadcrumb, FormGroup, ListGroupItem} from 'react-bootstrap'
+import {Row, Col, Button, Image, ListGroup, Card, Carousel, CarouselItem, Breadcrumb, Form, ListGroupItem} from 'react-bootstrap'
 import Rating from '../Components/Rating'
 import hotels from '../hotels'
+import DatePicker from "react-datepicker"
 
 const HotelScreen = () => {
     const { id } = useParams()
@@ -54,49 +55,27 @@ const HotelScreen = () => {
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Single Room:</Col>
                                     <Col>
-                                    <div class="form-group">
-                                                        <select multiple="" className="form-select">
-                                                            <option>0</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                        </select>
-                                                    </div>
+                                    <Form.Select>
+                                    <option>Single Room</option>
+                                    <option>Studio</option>
+                                    <option>Suite</option>
+                                    </Form.Select>
+                                    </Col>
+                                    <Col>
+                                    <Form.Select>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    </Form.Select>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Studio:</Col>
-                                    <Col>
-                                    <div class="form-group">
-                                                        <select multiple="" className="form-select">
-                                                            <option>0</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                        </select>
-                                                    </div>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Suite:</Col>
-                                    <Col>
-                                    <div class="form-group">
-                                                        <select multiple="" className="form-select">
-                                                            <option>0</option>
-                                                            <option>1</option>
-                                                        </select>
-                                                    </div>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
+                            {/* <ListGroup.Item>
+                                Check in date: <DatePicker />
+                                <br></br>
+                                Check out date: <DatePicker />
+                            </ListGroup.Item> */}
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Subtotal:</Col>
