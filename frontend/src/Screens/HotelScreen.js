@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import {Row, Col, Button, Image, ListGroup, Card, Carousel, CarouselItem, Breadcrumb, Form, ListGroupItem} from 'react-bootstrap'
 import Rating from '../Components/Rating'
-import hotels from '../hotels'
 import DatePicker from "react-datepicker"
+import { useDispatch, useSelector } from 'react-redux'
+import { listHotelDetails} from '../actions/hotelActions'
 
 const HotelScreen = () => {
+    const dispatch = useDispatch()
+    const hotelDetails = useSelector(state => state.hotelDetails)
+    const { loading, error, hotel } = hotelDetails
     const { id } = useParams()
-    const hotel = hotels.find(p => p._id === parseInt(id))
+
+    useEffect(() => {
+        dispatch(listHotelDetails(id))
+    }, [dispatch])
 
     return (
         <>

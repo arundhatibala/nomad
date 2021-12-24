@@ -16,7 +16,7 @@ import {hotelListReducer, hotelDetailsReducer, hotelReviewCreateReducer} from '.
 
 const reducer = combineReducers({
     hotelList: hotelListReducer,
-    //hotelDetails: hotelDetailsReducer,
+    hotelDetails: hotelDetailsReducer,
     //hotelReviewCreate: hotelReviewCreateReducer,
 //     cart: cartReducer,
 //     userLogin: userLoginReducer,

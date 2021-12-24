@@ -4,6 +4,7 @@ import colors from 'colors'
 import connectDB from './config/db.js'
 import cookieParser from 'cookie-parser'
 import hotelRoutes from './routes/hotelRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 //import generateToken from './utils/generateToken.js'
 // const require = createRequire(import.meta.url)
@@ -15,6 +16,7 @@ dotenv.config()
 connectDB()
 const app = express()
 
+app.use(express.json())
 // app.use(cookieParser())
 // if (process.env.NODE_ENV === 'development') {
 //     app.use(morgan('dev'))
@@ -25,6 +27,7 @@ app.get('/', (req,res) => {
 })
 
 app.use('/api/hotels', hotelRoutes)
+app.use('/api/users', userRoutes)
 // app.get('/auth_callback', async function (req, res) {
 //     const oauth2Client = new OAuth2(CONFIG.oauth2Credentials.client_id, CONFIG.oauth2Credentials.client_secret, CONFIG.oauth2Credentials.redirect_uris[0]);
 //     if (req.query.error) {
