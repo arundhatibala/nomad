@@ -33,22 +33,56 @@ const Explore = () => {
     ]
   })
 
-  const onSearch = ({ currentTarget }) =>
+  const onSearch = ({ e }) =>
   {
-      updateQuery(currentTarget.value);
+      updateQuery(e.value);
   }
 
   const loca = locationFind.search ? String(locationFind.search.split('=')[1]) : "All Locations"
   console.log(loca)
 
-  if(loca === "nyc")
-  {
-      loc = 
-      setLocation("Location: New York City")
-  }
- 
   const results = fuse.search(query);
   const hotelResults = query ? results.map(hotel => hotel.item) : hotels
+
+  let locResults = hotelResults
+
+  if(loca === "nyc")
+  {
+    locResults = hotelResults.filter(hotel => hotel.location === "New York City")
+    loc = "New York City"
+  }
+  else if(loca === "tokyo")
+  {
+    locResults = hotelResults.filer(hotel => hotel.location === "Tokyo")
+    loc = "Tokyo"
+  }
+  else if(loca === "buenosaires")
+  {
+    locResults = hotelResults.filter(hotel => hotel.location === "Buenos Aires")
+    loc = "Buenos Aires"
+  }
+  else if(loca === "amsterdam")
+  {
+    locResults = hotelResults.filter(hotel => hotel.location === "Amsterdam")
+    loc = "Amsterdam"
+  }
+  else
+  {
+    locResults = hotelResults
+  }
+
+  let sortResult = locResults
+    if (sort === "Sort By: Default") {
+         sortResult = locResults
+    }
+    else if (sort === "Sort By: Low to High"){
+        sortResult = locResults.sort((firstItem, secondItem) => firstItem.price - secondItem.price)
+    }
+    else {
+        const temp = locResults.sort((firstItem, secondItem) => firstItem.price - secondItem.price)
+        sortResult = locResults.reverse()
+    }
+
 
   return (
     <>
@@ -70,9 +104,8 @@ const Explore = () => {
       <Row>
         <Col md={3}>
           <Form.Select
-            value = {loc} onChange={(e) => setLocation(e.target.value)}
-          >
-            <option value = "default">All Locations</option>
+            value = {loc} onChange={(e) => setLocation(e.target.value)}>
+            <option value = "default" >All Locations</option>
             <option value = "amsterdam">Location: Amsterdam</option>
             <option value = "buenosaires">Location: Buenos Aires</option>
             <option value = "nyc">Location: New York City</option>
@@ -94,7 +127,7 @@ const Explore = () => {
       <br></br>
       {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> :
         <Row>
-          {hotelResults.map(hotel => (
+          {sortResult.map(hotel => (
             <Col key={hotel._id} s={12} md={6} lg={4} xl={3}>
               <Hotel hotel={hotel} />
             </Col>
