@@ -1,7 +1,7 @@
 //To register a new user
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Row, Col, FloatingLabel } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
@@ -44,35 +44,32 @@ const Register = ({ }) => {
     }
     return (
         <FormContainer>
+            <br></br>
             <h1>Sign Up</h1>
             <br></br>
             {message && <Message variant='danger'>{message}</Message>}
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
             <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
-                <Form.Label>Name</Form.Label>
+            <FloatingLabel controlId='name' label = "Name">
                 <Form.Control type='name' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}>
                 </Form.Control>
-            </Form.Group>
+            </FloatingLabel>
             <br></br>
-            <Form.Group controlId='email'>
-                <Form.Label>Email Address</Form.Label>
+            <FloatingLabel controlId='email' label = "Email Address">
                 <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}>
                 </Form.Control>
-            </Form.Group>
+            </FloatingLabel>
             <br></br>
-            <Form.Group controlId='password'>
-                <Form.Label>Password</Form.Label>
+            <FloatingLabel controlId='password' label = "Password">
                 <Form.Control type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}>
                 </Form.Control>
-            </Form.Group>
+            </FloatingLabel>
             <br></br>
-            <Form.Group controlId='ConfirmPassword'>
-                <Form.Label>Password</Form.Label>
+            <FloatingLabel controlId='ConfirmPassword' label = "Confirm Password">
                 <Form.Control type='password' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}>
                 </Form.Control>
-            </Form.Group>
+            </FloatingLabel>
             <br></br>
             <Button type='submit' variant='secondary'>
                 Sign Up

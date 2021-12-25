@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Row, Col, FloatingLabel } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
@@ -42,22 +42,27 @@ const Login = ({ }) => {
     return (
         
         <FormContainer>
+            <br></br>
             <center><h1>Sign In</h1></center>
             {error && <Message variant='danger'>{error}</Message>}
             {loading && <Loader />}
-            
+            <br></br>
             <Form onSubmit={submitHandler}>
-                <Form.Group controlId='email'>
-                    <Form.Label>Email Address</Form.Label>
-                    <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}>
+                <FloatingLabel 
+                controlId='email'
+                label="Email Address"
+                >
+                    <Form.Control className = "form-floating" type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}>
                     </Form.Control>
-                </Form.Group>
+                </FloatingLabel>
                 <br></br>
-                <Form.Group controlId='password'>
-                    <Form.Label>Password</Form.Label>
+                <FloatingLabel 
+                controlId='password'
+                label="Password"
+                >
                     <Form.Control type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}>
                     </Form.Control>
-                </Form.Group>
+                </FloatingLabel>
                 <br></br>
                 <Button type='submit' variant='secondary'>
                     Sign In
