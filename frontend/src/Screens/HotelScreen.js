@@ -5,12 +5,37 @@ import Rating from '../Components/Rating'
 import DatePicker from "react-datepicker"
 import { useDispatch, useSelector } from 'react-redux'
 import { listHotelDetails} from '../actions/hotelActions'
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
 
 const HotelScreen = () => {
     const dispatch = useDispatch()
     const hotelDetails = useSelector(state => state.hotelDetails)
     const { loading, error, hotel } = hotelDetails
     const { id } = useParams()
+
+    const Map = ReactMapboxGl({
+        accessToken:
+          'pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw'
+      })
+
+      let mapLink = ""
+
+      if (hotel.location ==="Amsterdam")
+      {
+          mapLink = "https://api.mapbox.com/styles/v1/arundhati08/ckxlkbhob22zi15qz1y0g4pdf.html?title=false&access_token=pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw&zoomwheel=false#11.56/52.3427/4.8845"
+      }
+      else if (hotel.location ==="Buenos Aires")
+      {
+          mapLink = "https://api.mapbox.com/styles/v1/arundhati08/ckxlxn8x31oo614pe42kyqtlq.html?title=false&access_token=pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw&zoomwheel=false#12.49/-34.59843/-58.40998"
+      }
+      else if (hotel.location ==="New York City")
+      {
+          mapLink = "https://api.mapbox.com/styles/v1/arundhati08/ckxlxh3jj5sul15nxwrbeleyl.html?title=false&access_token=pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw&zoomwheel=false#12.09/40.74678/-73.9825"
+      }
+      else
+      {
+          mapLink = "https://api.mapbox.com/styles/v1/arundhati08/ckxlxqsf23b1h14mmgypc603k.html?title=false&access_token=pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw&zoomwheel=false#12.49/-34.59843/-58.40998"
+      }
 
     useEffect(() => {
         dispatch(listHotelDetails(id))
@@ -103,6 +128,19 @@ const HotelScreen = () => {
                         <h5>Amenities include:</h5>
                         <p>{hotel.amenities}</p>
                         </Col>
+                        </Row>
+                        <Row>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <center><h4>Hotels in the vicinity:</h4></center>
+                        <br></br>
+                        <iframe 
+                        width='100%' 
+                        height='400px' 
+                        src={mapLink} 
+                        title="tokyo-hotels" style={{border: "none"}}>
+                        </iframe>
                         </Row>
         </>
     )

@@ -24,7 +24,7 @@ const Home = () => {
             <h1 style = {{color:"rgba(0,0,0,0)"}}id= "destinations">anchor</h1>
             <h2 style ={{padding:"0px", margin:"0px"}}>destinations.</h2>
             <Col style = {{padding: "5px", margin:"0px"}}>
-                <Link to = '/amsterdam'>
+            <Link to = '/explore?location=amsterdam'>
                 <Card className = "px-1 py-1" style = {{marginTop: "30px", borderRadius:"0px"}}>
                 <Card.Img src = {Amsterdam} style = {{borderRadius:"0px"}}/>
                 <Card.ImgOverlay className = "overlay" style = {{borderRadius:"0px"}}>
@@ -35,7 +35,7 @@ const Home = () => {
         </Card></Link>
             </Col>
             <Col style = {{padding: "5px"}}>
-            <Link to = '/buenosaires'>
+            <Link to = '/explore?location=buenosaires'>
                 <Card className = "px-1 py-1" style = {{marginTop: "30px", borderRadius:"0px"}}>
                 <Card.Img src = {BuenosAires} style = {{borderRadius:"0px"}}/>
                 <Card.ImgOverlay className = "overlay" style = {{borderRadius:"0px"}}>
@@ -56,7 +56,7 @@ const Home = () => {
         </Card>
         </Col>  */}
             <Col style = {{padding: "5px"}}>
-            <Link to = '/newyorkcity'>
+            <Link to = '/explore?location=nyc'>
                 <Card className = "px-1 py-1" style = {{marginTop: "30px", borderRadius:"0px"}}>
                 <Card.Img src = {NYC} style = {{borderRadius:"0px"}}/>
                 <Card.ImgOverlay className = "overlay" style = {{borderRadius:"0px"}}>
@@ -67,7 +67,7 @@ const Home = () => {
         </Card></Link>
             </Col>
             <Col style = {{padding: "5px"}}>
-            <Link to = '/tokyo'>
+            <Link to = '/explore?location=tokyo'>
                 <Card className = "px-1 py-1" style = {{marginTop: "30px", borderRadius:"0px"}}>
                 <Card.Img src = {Tokyo} style = {{borderRadius:"0px"}}/>
                 <Card.ImgOverlay className = "overlay" style = {{borderRadius:"0px"}}>

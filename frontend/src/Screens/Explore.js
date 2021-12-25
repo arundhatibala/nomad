@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Hotel from '../Components/Hotel'
 //Displays all hotels and uses fuzzy search, location filter and sorting
@@ -8,15 +8,47 @@ import { useDispatch, useSelector } from 'react-redux'
 import { listHotels } from '../actions/hotelActions'
 import { Form } from 'react-bootstrap'
 import Fuse from "fuse.js"
+import { useLocation } from 'react-router'
 
 const Explore = () => {
   const dispatch = useDispatch()
   const hotelList = useSelector(state => state.hotelList)
   const { loading, error, hotels } = hotelList
+  let locationFind = useLocation()
+
+  const [query, updateQuery] = useState('');
+  let [loc, setLocation] = useState('All Locations')
+  const [sort, setSort] = useState('')
 
   useEffect(() => {
     dispatch(listHotels())
   }, [dispatch])
+
+
+  const fuse = new Fuse(hotels, {
+    keys: [
+      'name',
+      'amenities',
+      'location'
+    ]
+  })
+
+  const onSearch = ({ currentTarget }) =>
+  {
+      updateQuery(currentTarget.value);
+  }
+
+  const loca = locationFind.search ? String(locationFind.search.split('=')[1]) : "All Locations"
+  console.log(loca)
+
+  if(loca === "nyc")
+  {
+      loc = 
+      setLocation("Location: New York City")
+  }
+ 
+  const results = fuse.search(query);
+  const hotelResults = query ? results.map(hotel => hotel.item) : hotels
 
   return (
     <>
@@ -26,7 +58,8 @@ const Explore = () => {
       <Form>
         <Form.Control
           type="text"
-          //   value = {query}
+          value = {query}
+          onChange = {onSearch}
           placeholder="Search by name, amenity..."
         >
         </Form.Control>
@@ -37,20 +70,20 @@ const Explore = () => {
       <Row>
         <Col md={3}>
           <Form.Select
-          //   value = {location} onChange={(e) => setLocation(e.target.value)}
+            value = {loc} onChange={(e) => setLocation(e.target.value)}
           >
-            <option>All Locations</option>
-            <option>Location: Amsterdam</option>
-            <option>Location: Buenos Aires</option>
-            <option>Location: New York City</option>
-            <option>Location: Tokyo</option>
+            <option value = "default">All Locations</option>
+            <option value = "amsterdam">Location: Amsterdam</option>
+            <option value = "buenosaires">Location: Buenos Aires</option>
+            <option value = "nyc">Location: New York City</option>
+            <option value = "tokyo">Location: Tokyo</option>
           </Form.Select>
         </Col>
         <Col md={3}></Col>
         <Col md={3}></Col>
         <Col md={3}>
           <Form.Select
-          //   value = {sort} onChange={(e) => setSort(e.target.value)}
+            value = {sort} onChange={(e) => setSort(e.target.value)}
           >
             <option>Sort By: Default</option>
             <option>Sort By: Low to High</option>
@@ -61,8 +94,8 @@ const Explore = () => {
       <br></br>
       {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> :
         <Row>
-          {hotels.map(hotel => (
-            <Col key={hotel.name} s={12} md={6} lg={4} xl={3}>
+          {hotelResults.map(hotel => (
+            <Col key={hotel._id} s={12} md={6} lg={4} xl={3}>
               <Hotel hotel={hotel} />
             </Col>
           ))}
