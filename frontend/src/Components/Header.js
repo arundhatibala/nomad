@@ -2,9 +2,22 @@ import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import {useNavigate } from 'react-router'
 import { HashLink as Link } from 'react-router-hash-link'
+import { useDispatch, useSelector} from 'react-redux'
+import { logout } from '../actions/userActions'
+import { NavDropdown} from 'react-bootstrap' //, Button , Container, 
+
 
 const Header = () => {
   let navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const userLogin = useSelector(state => state.userLogin)
+  const {userInfo} = userLogin
+
+  const logoutHandler = () => {
+    navigate("/")
+    dispatch(logout())
+  }
     return (
         <header style= {{backgroundColor: 'rgba(255, 255, 255, 0)'}}>
             <Navbar collapseOnSelect expand="lg" variant="dark" style = {{padding: '10px 5px'}}>
@@ -18,7 +31,16 @@ const Header = () => {
     </Nav>
     <Nav>
     <Nav.Link href = "/explore" className = "bi bi-search"></Nav.Link>
+    {userInfo ? (
+      <NavDropdown title={userInfo.name} id='username'>
+        <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
+        <NavDropdown.Item href='/wishlist'>Wishlist</NavDropdown.Item>
+        <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+        </NavDropdown>
+      ) : 
       <Nav.Link href = "/login" className = "bi bi-person-circle"></Nav.Link>
+      }
+    {/* <Nav.Link href = "/login" className = "bi bi-person-circle"></Nav.Link> */}
     </Nav>
   </Navbar.Collapse>
   </Container>

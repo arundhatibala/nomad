@@ -53,7 +53,7 @@ const Explore = () => {
   }
   else if(loca === "tokyo")
   {
-    locResults = hotelResults.filer(hotel => hotel.location === "Tokyo")
+    locResults = hotelResults.filter(hotel => hotel.location === "Tokyo")
     loc = "Tokyo"
   }
   else if(loca === "buenosaires")

@@ -18,7 +18,7 @@ const Register = ({ }) => {
 
     const dispatch = useDispatch()
     
-    const userRegister = useSelector(state => state.userRegister || {})
+    const userRegister = useSelector(state => state.userRegister) // svb here
     const { loading, error, userInfo, success } = userRegister
 
     let navigate = useNavigate()
@@ -39,7 +39,7 @@ const Register = ({ }) => {
         }
         else {
             dispatch(register(name, email, password))
-            { success && navigate('/cart') }
+            { success && navigate('/') }
         }
     }
     return (

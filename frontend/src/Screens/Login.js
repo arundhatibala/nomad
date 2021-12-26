@@ -15,7 +15,7 @@ const Login = ({ }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const dispatch = useDispatch()
-    const userLogin = useSelector(state => state.userLogin || {} )
+    const userLogin = useSelector(state => state.userLogin) //here #svb
     const { loading, error, userInfo, success } = userLogin  
     const [data, setData] = useState("")
 
@@ -37,7 +37,7 @@ const Login = ({ }) => {
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(login(email, password))
-        {success && navigate('/cart')}
+        {success && navigate("/explore")} // svb thinks this is not working
     }
     return (
         
