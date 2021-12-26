@@ -11,6 +11,8 @@ import Explore from './Screens/Explore'
 import Login from './Screens/Login'
 import Register from './Screens/Register'
 import HotelScreen from './Screens/HotelScreen'
+import Bookings from './Screens/Bookings'
+import Wishlist from './Screens/wishList'
 
 const App = () => {
   return (
@@ -25,6 +27,9 @@ const App = () => {
       <Route path='/register' element={<Register />} />
       <Route path='/profile' element={<Profile />} />
       <Route path='/explore' element={<Explore />} />
+      <Route path='/bookings' element={<Bookings />} />
+      <Route path='/bucketlist' element={<Wishlist />} />
+      <Route path='/bookings/:id' element={<Bookings />} />
       <Route path='/hotel/:id' element={<HotelScreen />} />
        </Routes>
     </Container>

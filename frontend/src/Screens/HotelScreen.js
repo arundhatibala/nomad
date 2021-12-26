@@ -1,17 +1,29 @@
-import React, {useEffect} from 'react'
-import {Link, useParams} from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import {Link, useParams, useNavigate} from 'react-router-dom'
 import {Row, Col, Button, Image, ListGroup, Card, Carousel, CarouselItem, Breadcrumb, Form, ListGroupItem} from 'react-bootstrap'
 import Rating from '../Components/Rating'
-import DatePicker from "react-datepicker"
 import { useDispatch, useSelector } from 'react-redux'
 import { listHotelDetails} from '../actions/hotelActions'
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { addToCart } from '../actions/cartActions'
+import { addToWish } from '../actions/wishActions'
 
 const HotelScreen = () => {
     const dispatch = useDispatch()
     const hotelDetails = useSelector(state => state.hotelDetails)
     const { loading, error, hotel } = hotelDetails
     const { id } = useParams()
+    const [qty, setQty] = useState(1)
+    const [room, setRoom] = useState("Single")
+
+    const [startDate, setStartDate] = useState(new Date("2022-01-01"))
+    const [endDate, setEndDate] = useState(new Date("2022-01-01"))
+
+    let diffInMs = 0
+
+    diffInMs = (Math.abs(endDate - startDate)/(1000 * 60 * 60 * 24))+1
 
     const Map = ReactMapboxGl({
         accessToken:
@@ -40,6 +52,38 @@ const HotelScreen = () => {
     useEffect(() => {
         dispatch(listHotelDetails(id))
     }, [dispatch])
+
+    let navigate = useNavigate()
+
+    const addToCartHandler = () =>
+    {
+        dispatch(addToCart(id, qty, startDate, endDate, subtotal, room))
+        navigate(`/bookings/${id}?qty=${qty}&start=${start}&end=${end}&subtotal=${subtotal}&room=${room}`)
+    }
+    const addToWishHandler = () =>
+    {
+        dispatch(addToWish(id))
+        navigate(`/bucketlist`)
+    }
+
+    const start =  startDate.toISOString()
+    const end =  endDate.toISOString()
+
+    let roomFact = 1.0
+    if(room === "Studio")
+    {
+        roomFact = 1.25
+    }
+    else if (room === "Suite")
+    {
+        roomFact = 1.5
+    }
+    else
+    {
+        roomFact = 1.0
+    }
+
+    const subtotal = (qty*roomFact*diffInMs*hotel.price).toFixed(2)
 
     return (
         <>
@@ -88,14 +132,14 @@ const HotelScreen = () => {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>
-                                    <Form.Select>
-                                    <option>Single Room</option>
-                                    <option>Studio</option>
-                                    <option>Suite</option>
+                                    <Form.Select value ={room} onChange={(e) => setRoom(e.target.value)}>
+                                    <option value = "Single">Single</option>
+                                    <option value = "Studio">Studio</option>
+                                    <option value = "Suite">Suite</option>
                                     </Form.Select>
                                     </Col>
                                     <Col>
-                                    <Form.Select>
+                                    <Form.Select value ={qty} onChange={(e) => setQty(e.target.value)}>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -103,24 +147,49 @@ const HotelScreen = () => {
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
-                            {/* <ListGroup.Item>
-                                Check in date: <DatePicker />
-                                <br></br>
-                                Check out date: <DatePicker />
-                            </ListGroup.Item> */}
+                            <ListGroup.Item>
+                             <Row> 
+                            <Col>
+                            Check-in Date:
+                            </Col>
+                             <Col>      
+                             <DatePicker className="form-control"
+                                selected={startDate}
+                                onChange={(date) => setStartDate(date)}
+                                selectsStart
+                                startDate={startDate}
+                                 endDate={endDate}/>
+                            </Col>
+                            </Row>
+                            </ListGroup.Item>
+                            <ListGroup.Item>
+                             <Row> 
+                            <Col>
+                            Check-out Date:
+                            </Col>
+                             <Col>      
+                             <DatePicker className="form-control"
+                                selected={endDate}
+                                onChange={(date) => setEndDate(date)}
+                                selectsStart
+                                startDate={startDate}
+                                 endDate={endDate}/>
+                            </Col>
+                            </Row>
+                            </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Subtotal:</Col>
-                                    <Col>&#8377; 0</Col>
+                                    <Col>&#8377; {subtotal}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
-                                <button type="button" className="btn btn-outline-success">Book Now</button>
+                                <button type="button" className="btn btn-outline-success" onClick={addToCartHandler}>Book Now</button>
                                 </Row>
                                 <br></br>
                                 <Row>
-                                <button type="button" className="btn btn-outline-primary">Add to Bucket List</button>
+                                <button type="button" className="btn btn-outline-primary" onClick={addToWishHandler}>Add to Bucket List</button>
                                 </Row>
                             </ListGroup.Item>
                         </ListGroup>

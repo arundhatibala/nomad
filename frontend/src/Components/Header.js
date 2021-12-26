@@ -6,7 +6,6 @@ import { useDispatch, useSelector} from 'react-redux'
 import { logout } from '../actions/userActions'
 import { NavDropdown} from 'react-bootstrap' //, Button , Container, 
 
-
 const Header = () => {
   let navigate = useNavigate()
   const dispatch = useDispatch()
@@ -34,7 +33,7 @@ const Header = () => {
     {userInfo ? (
       <NavDropdown title={userInfo.name} id='username'>
         <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
-        <NavDropdown.Item href='/wishlist'>Wishlist</NavDropdown.Item>
+        <NavDropdown.Item href='/bucketlist'>Bucket List</NavDropdown.Item>
         <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
       </NavDropdown>
       ) : 
