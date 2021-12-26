@@ -36,11 +36,11 @@ const Header = () => {
         <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
         <NavDropdown.Item href='/wishlist'>Wishlist</NavDropdown.Item>
         <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
-        </NavDropdown>
+      </NavDropdown>
       ) : 
       <Nav.Link href = "/login" className = "bi bi-person-circle"></Nav.Link>
-      }
-    {/* <Nav.Link href = "/login" className = "bi bi-person-circle"></Nav.Link> */}
+    }
+    {userInfo && <Nav.Link href = "/bookings" className = "bi bi-compass"></Nav.Link>}
     </Nav>
   </Navbar.Collapse>
   </Container>

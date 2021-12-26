@@ -19,21 +19,21 @@ const Footer = () => {
                 <Row>
                     <Col sm = {6} md ={3}>
                         <h5>destinations.</h5>
-                            <a style = {{textDecoration:"none"}} href="/explore/amsterdam">Amsterdam</a>
+                            <a style = {{textDecoration:"none"}} href="/explore?location=amsterdam">Amsterdam</a>
                             <br></br>
-                            <a style = {{textDecoration:"none"}} href="/explore/buenosaires">Buenos Aires</a>
+                            <a style = {{textDecoration:"none"}} href="/explore?location=buenosaires">Buenos Aires</a>
                             <br></br>
-                            <a style = {{textDecoration:"none"}} href="/explore/newyorkcity">New York City</a>
+                            <a style = {{textDecoration:"none"}} href="/explore?location=nyc">New York City</a>
                             <br></br>
-                            <a style = {{textDecoration:"none"}} href="/explore/tokyo">Tokyo</a>
+                            <a style = {{textDecoration:"none"}} href="/explore?location=tokyo">Tokyo</a>
                     </Col>
                     <Col sm = {6} md ={3}>
                         <h5>social.</h5>
-                            <a style = {{textDecoration:"none"}} href="instagram.com">Instagram</a>
+                            <a style = {{textDecoration:"none"}} href="https://instagram.com">Instagram</a>
                             <br></br>
-                            <a style = {{textDecoration:"none"}} href="facebook.com">Facebook</a>
+                            <a style = {{textDecoration:"none"}} href="https://facebook.com">Facebook</a>
                             <br></br>
-                            <a style = {{textDecoration:"none"}} href="twitter.com">Twitter</a>
+                            <a style = {{textDecoration:"none"}} href="https://twitter.com">Twitter</a>
                         
                     </Col>
                     <Col sm = {6} md ={3}>

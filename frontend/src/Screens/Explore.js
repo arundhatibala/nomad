@@ -33,9 +33,9 @@ const Explore = () => {
     ]
   })
 
-  const onSearch = ({ e }) =>
+  const onSearch = ({ currentTarget }) =>
   {
-      updateQuery(e.value);
+      updateQuery(currentTarget.value);
   }
 
   const loca = locationFind.search ? String(locationFind.search.split('=')[1]) : "All Locations"
@@ -45,30 +45,32 @@ const Explore = () => {
   const hotelResults = query ? results.map(hotel => hotel.item) : hotels
 
   let locResults = hotelResults
+  console.log(loc)
 
-  if(loca === "nyc")
+  if(loca === "nyc" || loc === "nyc")
   {
     locResults = hotelResults.filter(hotel => hotel.location === "New York City")
-    loc = "New York City"
+    loc = "nyc"
   }
-  else if(loca === "tokyo")
+  else if(loca === "tokyo"||loc === "tokyo")
   {
     locResults = hotelResults.filter(hotel => hotel.location === "Tokyo")
-    loc = "Tokyo"
+    loc = "tokyo"
   }
-  else if(loca === "buenosaires")
+  else if(loca === "buenosaires"||loc === "buenosaires")
   {
     locResults = hotelResults.filter(hotel => hotel.location === "Buenos Aires")
-    loc = "Buenos Aires"
+    loc = "buenosaires"
   }
-  else if(loca === "amsterdam")
+  else if(loca === "amsterdam"||loc === "amsterdam")
   {
     locResults = hotelResults.filter(hotel => hotel.location === "Amsterdam")
-    loc = "Amsterdam"
+    loc = "amsterdam"
   }
   else
   {
     locResults = hotelResults
+    loc = "default"
   }
 
   let sortResult = locResults
@@ -105,7 +107,7 @@ const Explore = () => {
         <Col md={3}>
           <Form.Select
             value = {loc} onChange={(e) => setLocation(e.target.value)}>
-            <option value = "default" >All Locations</option>
+            <option value = "default">All Locations</option>
             <option value = "amsterdam">Location: Amsterdam</option>
             <option value = "buenosaires">Location: Buenos Aires</option>
             <option value = "nyc">Location: New York City</option>
