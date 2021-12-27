@@ -37,7 +37,7 @@ const Login = ({ }) => {
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(login(email, password))
-        {success && navigate("/explore")} // svb thinks this is not working
+        navigate(`/explore`) // svb thinks this is not working
     }
     return (
         

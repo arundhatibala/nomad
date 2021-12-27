@@ -14,15 +14,16 @@ import { addToWish } from '../actions/wishActions'
 import { HOTEL_CREATE_REVIEW_RESET } from '../constants/hotelConstants'
 
 
-const HotelScreen = () => {
-    const dispatch = useDispatch()
-    const hotelDetails = useSelector(state => state.hotelDetails)
-    const { loading, error, hotel } = hotelDetails
+const HotelScreen = ({ match }) => {
     const { id } = useParams()
+    const dispatch = useDispatch()
+    const hotelDetails = useSelector((state) => state.hotelDetails)
+    const { loading, error, hotel } = hotelDetails
     const [qty, setQty] = useState(1)
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState('')
     const [room, setRoom] = useState("Single")
+
 
     const [startDate, setStartDate] = useState(new Date("2022-01-01"))
     const [endDate, setEndDate] = useState(new Date("2022-01-01"))
@@ -30,8 +31,19 @@ const HotelScreen = () => {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
-    const hotelReviewCreate = useSelector((state) => state.hotelReviewCreate)
+    const hotelReviewCreate = useSelector(state => state.hotelReviewCreate)
     const { success: successHotelReview, error: errorHotelReview } = hotelReviewCreate
+
+    useEffect(() => {
+        dispatch(listHotelDetails(id))
+        if (successHotelReview) {
+            alert('Review Submitted!')
+            setRating(0)
+            setComment('')
+            dispatch({ type: HOTEL_CREATE_REVIEW_RESET })
+        }
+    }, [dispatch, successHotelReview, id, match])
+
 
     let diffInMs = 0
 
@@ -57,16 +69,6 @@ const HotelScreen = () => {
         mapLink = "https://api.mapbox.com/styles/v1/arundhati08/ckxlxqsf23b1h14mmgypc603k.html?title=false&access_token=pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw&zoomwheel=false#12.49/-34.59843/-58.40998"
     }
 
-    useEffect(() => {
-        if (successHotelReview) {
-            alert('Review Submitted!')
-            setRating(0)
-            setComment('')
-            dispatch({ type: HOTEL_CREATE_REVIEW_RESET })
-        }
-        dispatch(listHotelDetails(id))
-    }, [dispatch, successHotelReview])
-
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(createHotelReview(id, {
@@ -77,8 +79,12 @@ const HotelScreen = () => {
     let navigate = useNavigate()
 
     const addToCartHandler = () => {
+        if(userInfo){
         dispatch(addToCart(id, qty, startDate, endDate, subtotal, room))
-        navigate(`/bookings/${id}?qty=${qty}&start=${start}&end=${end}&subtotal=${subtotal}&room=${room}`)
+        navigate(`/bookings`)
+        }
+        else
+        navigate(`/login`)
     }
     const addToWishHandler = () => {
         dispatch(addToWish(id))

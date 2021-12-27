@@ -91,7 +91,7 @@ const checkoutHandler = () => {
                             Check-in date: 
                             <br></br>
                             <fieldset style = {{marginBottom: "10px"}}>
-                                <center><input class="form-control" id="readOnlyInput" type="text" placeholder = {item.startDate.toString().substring(0,15)} readonly=""/></center>
+                                <center><input class="form-control" id="readOnlyInput" type="text" placeholder = {(item.startDate).toString().substring(0,15)} readonly=""/></center>
                                  </fieldset>
                             Check-out date: 
                             <br></br>
@@ -120,7 +120,7 @@ const checkoutHandler = () => {
         }
            </Col>
         </Row>
-        <Row style = {{paddingTop:"20px"}}>
+        {/* <Row style = {{paddingTop:"20px"}}>
             <Col>
             <Card>
                 <ListGroup variant = 'flush'>
@@ -138,7 +138,7 @@ const checkoutHandler = () => {
                 </ListGroup>
             </Card>
             </Col>
-        </Row>
+        </Row> */}
         </>
     )
 

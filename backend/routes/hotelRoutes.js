@@ -4,7 +4,7 @@ import { getHotels, getHotelById, createHotelReview } from '../controllers/hotel
 import { protect } from '../middleware/authMiddleware.js'
 
 router.route('/').get(getHotels)
-router.route('/:id/reviews').get(protect, createHotelReview)
-router.route('/:id').post(getHotelById)
+router.route('/:id/reviews').post(protect, createHotelReview)
+router.route('/:id').get(getHotelById)
 
 export default router
