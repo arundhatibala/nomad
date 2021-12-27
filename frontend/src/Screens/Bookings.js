@@ -34,7 +34,7 @@ const CartScreen = ({}) => {
     let navigate = useNavigate()
 
 const checkoutHandler = () => {
-        navigate('/login?redirect=/shipping')
+        navigate('/login?redirect=/payment')
     }
 
     const removeFromCartHandler  = (id) => {
@@ -120,13 +120,13 @@ const checkoutHandler = () => {
         }
            </Col>
         </Row>
-        {/* <Row style = {{paddingTop:"20px"}}>
+        <Row style = {{paddingTop:"20px"}}>
             <Col>
             <Card>
                 <ListGroup variant = 'flush'>
                     <ListGroup.Item>
                         <h2>Subtotal ({cartItems.reduce((acc, item)=> acc + item.qty, 0)}) rooms booked</h2>
-                        <h3>&#8377; {cartItems.reduce((acc, item) => acc + item.subtotal, 0).toFixed(2)}*</h3>
+                        {/* <h3>&#8377; {cartItems.reduce((acc, item) => acc + item.subtotal, 0).toFixed(2)}*</h3> */}
                         <h6>*Taxes not included</h6>
                     </ListGroup.Item>
                     <ListGroup.Item>
@@ -138,7 +138,7 @@ const checkoutHandler = () => {
                 </ListGroup>
             </Card>
             </Col>
-        </Row> */}
+        </Row>
         </>
     )
 
