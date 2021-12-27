@@ -17,7 +17,7 @@ import { wishReducer } from './reducers/wishReducers'
 const reducer = combineReducers({
     hotelList: hotelListReducer,
     hotelDetails: hotelDetailsReducer,
-    //hotelReviewCreate: hotelReviewCreateReducer,
+    hotelReviewCreate: hotelReviewCreateReducer,
     cart: cartReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
