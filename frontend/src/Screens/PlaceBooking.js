@@ -15,10 +15,10 @@ const PlaceBooking = () => {
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
     let navigate = useNavigate()
-    cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+    cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.subtotal * item.qty, 0)
 
     cart.shippingPrice = cart.itemsPrice > 10000 ? 0 : 100
-    cart.taxPrice = Number((0.15 * cart.itemsPrice).toFixed(2))
+    cart.taxPrice = Number((0.05 * cart.itemsPrice).toFixed(2))
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
     
     const bookingCreate = useSelector(state => state.bookingCreate || {})
@@ -75,7 +75,6 @@ const PlaceBooking = () => {
                                     <Link to={`/hotel/${item.product}`}>
                                         {item.name}: {item.room} room.
                                     </Link>
-                                    <p>{hotel.amenities}</p>  {/* how to make this work  */}
                                         </Col>
 
                                     <Col md={4}>
@@ -107,7 +106,7 @@ const PlaceBooking = () => {
                             </ListGroup.Item> */}
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Tax (15%)</Col>
+                                    <Col>Tax (5%)</Col>
                                     <Col>&#8377;{cart.taxPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
@@ -121,7 +120,9 @@ const PlaceBooking = () => {
                                 {error && <Message variant='danger'>{error}</Message>}
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                <Button type='button' className='btn-block' disabled={cart.cartItems === 0} onClick={placeBookingHandler}>Place Booking</Button>
+                                <Row>
+                                <button type='button' className="btn btn-outline-dark" disabled={cart.cartItems === 0} onClick={placeBookingHandler}>Place Booking</button>
+                                </Row>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>

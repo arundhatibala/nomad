@@ -9,21 +9,21 @@ import { addToWish } from '../actions/wishActions'
 
 const CartScreen = ({}) => {
     const { id } = useParams()
-    let location = useLocation()
-    const query = location.search ? (location.search.split('=')) : []
-    let start = location.search && query[2].substring(0,24)
-    let end = location.search && query[3].substring(0,24) 
-    const subtotal = location.search && query[4].split('&')[0]
-    const qty = location.search ? query[1].substring(0,1) : 1
-    const room = location.search && query[5] 
+    // let location = useLocation()
+    // const query = location.search ? (location.search.split('=')) : []
+    // let start = location.search && query[2].substring(0,24)
+    // let end = location.search && query[3].substring(0,24) 
+    // const subtotal = location.search && query[4].split('&')[0]
+    // const qty = location.search ? query[1].substring(0,1) : 1
+    // const room = location.search && query[5] 
 
-    let temp = start.split(/\D+/);
+    // let temp = start.split(/\D+/);
 
-    const startDate = Date.UTC([0], --temp[1], temp[2], temp[3], temp[4], temp[5], temp[6])
+    // const startDate = Date.UTC([0], --temp[1], temp[2], temp[3], temp[4], temp[5], temp[6])
 
-     temp = end.split(/\D+/);
+    //  temp = end.split(/\D+/);
 
-     const endDate = Date.UTC([0], --temp[1], temp[2], temp[3], temp[4], temp[5], temp[6])
+    //  const endDate = Date.UTC([0], --temp[1], temp[2], temp[3], temp[4], temp[5], temp[6])
 
     const dispatch = useDispatch()
 
@@ -78,7 +78,7 @@ const checkoutHandler = () => {
                                 </a>
                                 Room Quantity:
                                 <div class="form-group" style = {{marginBottom: "10px"}}>
-                                <select multiple="" className="form-select" id="exampleSelect2" value = {item.qty} onChange = {(e) => dispatch(addToCart(item.product, Number(e.target.value), item.startDate, item.endDate, (subtotal*e.target.value), item.room))}>
+                                <select multiple="" className="form-select" id="exampleSelect2" value = {item.qty} onChange = {(e) => dispatch(addToCart(item.product, Number(e.target.value), item.startDate, item.endDate, item.subtotal, item.room))}>
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -91,18 +91,18 @@ const checkoutHandler = () => {
                             Check-in date: 
                             <br></br>
                             <fieldset style = {{marginBottom: "10px"}}>
-                                <center><input class="form-control" id="readOnlyInput" type="text" placeholder = {(item.startDate).toString().substring(0,15)} readonly=""/></center>
+                                <center><input class="form-control" id="readOnlyInput" type="text" placeholder = {(item.startDate)} readonly=""/></center>
                                  </fieldset>
                             Check-out date: 
                             <br></br>
                             <fieldset style = {{marginBottom: "10px"}}>
-                                <center><input class="form-control" id="readOnlyInput" type="text" placeholder= {item.endDate.toString().substring(0,15)} readonly=""/></center>
+                                <center><input class="form-control" id="readOnlyInput" type="text" placeholder= {(item.endDate)} readonly=""/></center>
                                  </fieldset>
                             </Col>
                             <Col md ={2}>
                             Price (in rupees):
                             <fieldset style = {{marginBottom: "10px"}}>
-                                <center><input class="form-control" id="readOnlyInput" type="text" placeholder= {item.subtotal} readonly=""/></center>
+                                <center><input class="form-control" id="readOnlyInput" type="text" placeholder= {item.subtotal*item.qty} readonly=""/></center>
                                  </fieldset>
                             </Col>
                             <Col md = {1}>
@@ -131,8 +131,8 @@ const checkoutHandler = () => {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <Row>
-                        <Button type='button' className='btn btn-dark' disabled={cartItems.length === 0} onClick={checkoutHandler}>
-                            Proceed to Checkout</Button> 
+                        <button type='button' className='btn btn-outline-dark' disabled={cartItems.length === 0} onClick={checkoutHandler}>
+                            Proceed to Checkout</button> 
                         </Row>                   
                     </ListGroup.Item>
                 </ListGroup>

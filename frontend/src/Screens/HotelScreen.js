@@ -25,8 +25,14 @@ const HotelScreen = ({ match }) => {
     const [room, setRoom] = useState("Single")
 
 
-    const [startDate, setStartDate] = useState(new Date("2022-01-01"))
-    const [endDate, setEndDate] = useState(new Date("2022-01-01"))
+    const [start, setStartDate] = useState(new Date("2022-01-01"))
+    const [end, setEndDate] = useState(new Date("2022-01-01"))
+
+    const startDate = start.getDate() +"/"+ start.getMonth() +"/"+ start.getFullYear()
+    const endDate = end.getDate() +"/"+ end.getMonth() +"/"+ end.getFullYear()
+
+    console.log(startDate)
+
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -47,7 +53,7 @@ const HotelScreen = ({ match }) => {
 
     let diffInMs = 0
 
-    diffInMs = (Math.abs(endDate - startDate) / (1000 * 60 * 60 * 24)) + 1
+    diffInMs = (Math.abs(end - start) / (1000 * 60 * 60 * 24)) + 1
 
     const Map = ReactMapboxGl({
         accessToken:
@@ -55,18 +61,23 @@ const HotelScreen = ({ match }) => {
     })
 
     let mapLink = ""
+    let loc = ""
 
     if (hotel.location === "Amsterdam") {
         mapLink = "https://api.mapbox.com/styles/v1/arundhati08/ckxlkbhob22zi15qz1y0g4pdf.html?title=false&access_token=pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw&zoomwheel=false#11.56/52.3427/4.8845"
+        loc = "amsterdam"
     }
     else if (hotel.location === "Buenos Aires") {
         mapLink = "https://api.mapbox.com/styles/v1/arundhati08/ckxlxn8x31oo614pe42kyqtlq.html?title=false&access_token=pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw&zoomwheel=false#12.49/-34.59843/-58.40998"
+        loc = "buenosaires"
     }
     else if (hotel.location === "New York City") {
         mapLink = "https://api.mapbox.com/styles/v1/arundhati08/ckxlxh3jj5sul15nxwrbeleyl.html?title=false&access_token=pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw&zoomwheel=false#12.09/40.74678/-73.9825"
+        loc = "nyc"
     }
     else {
         mapLink = "https://api.mapbox.com/styles/v1/arundhati08/ckxlxqsf23b1h14mmgypc603k.html?title=false&access_token=pk.eyJ1IjoiYXJ1bmRoYXRpMDgiLCJhIjoiY2t3d2FwNjl0MDF1bTJucnJua3VldnN1ZCJ9.9YCEBV7RfCfhoEdb6wTTlw&zoomwheel=false#12.49/-34.59843/-58.40998"
+        loc = "tokyo"
     }
 
     const submitHandler = (e) => {
@@ -91,9 +102,6 @@ const HotelScreen = ({ match }) => {
         navigate(`/bucketlist`)
     }
 
-    const start = startDate.toISOString()
-    const end = endDate.toISOString()
-
     let roomFact = 1.0
     if (room === "Studio") {
         roomFact = 1.25
@@ -105,13 +113,14 @@ const HotelScreen = ({ match }) => {
         roomFact = 1.0
     }
 
-    const subtotal = (qty * roomFact * diffInMs * hotel.price).toFixed(2)
+    const subtotal = (roomFact * diffInMs * hotel.price).toFixed(2)
 
     return (
         <>
             <Breadcrumb>
-                <Breadcrumb.Item href="/explore">Explore</Breadcrumb.Item>
-                <Breadcrumb.Item href="#">{hotel.location}
+                <Breadcrumb.Item href="/explore">Explore
+                </Breadcrumb.Item>
+                <Breadcrumb.Item href={`/explore?location=${loc}`}>{hotel.location}
                 </Breadcrumb.Item>
                 <Breadcrumb.Item active>{hotel.name}</Breadcrumb.Item>
             </Breadcrumb>
@@ -176,11 +185,11 @@ const HotelScreen = ({ match }) => {
                             </Col>
                                 <Col>
                                     <DatePicker className="form-control"
-                                        selected={startDate}
+                                        selected={start}
                                         onChange={(date) => setStartDate(date)}
                                         selectsStart
-                                        startDate={startDate}
-                                        endDate={endDate} />
+                                        startDate={start}
+                                        endDate={end} />
                                 </Col>
                             </Row>
                         </ListGroup.Item>
@@ -191,18 +200,18 @@ const HotelScreen = ({ match }) => {
                             </Col>
                                 <Col>
                                     <DatePicker className="form-control"
-                                        selected={endDate}
+                                        selected={end}
                                         onChange={(date) => setEndDate(date)}
                                         selectsStart
-                                        startDate={startDate}
-                                        endDate={endDate} />
+                                        startDate={start}
+                                        endDate={end} />
                                 </Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
                             <Row>
                                 <Col>Subtotal:</Col>
-                                <Col>&#8377; {subtotal}</Col>
+                                <Col>&#8377; {subtotal*qty}</Col>
                             </Row>
                         </ListGroup.Item>
                         <ListGroup.Item>
