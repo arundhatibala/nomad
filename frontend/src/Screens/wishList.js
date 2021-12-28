@@ -43,11 +43,12 @@ const WishScreen = ({ match }) => {
     }
 
     return (
-        <Row>
+        <Row style = {{paddingTop:"30px"}}>
             <Col>
                 <h1>Bucket List</h1>
+                <br></br>
                 {wishItems.length === 0 ? (
-                    <Message>Your bucket list is empty.  <br></br><Link to="/explore">Go back to Explore</Link></Message>
+                    <Message>Your bucket list is empty. <Link to="/explore">Go back to Explore</Link></Message>
                 ) : <ListGroup variant="flush">
                         {wishItems.map(item => (
                             <ListGroup.Item key={item.product}>

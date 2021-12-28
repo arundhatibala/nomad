@@ -49,13 +49,12 @@ const checkoutHandler = () => {
 
     return (
         <>
-
-            <Row>
+            <Row style = {{paddingTop:"40px"}}>
            <Col>
             <h1>Bookings</h1>
             <br></br>
             {cartItems.length === 0 ? (
-            <Message>Your cart is empty  <br></br><Link to ="/explore">Go back to Explore</Link></Message>
+            <Message>Your cart is empty. <Link to ="/explore">Go back to Explore</Link></Message>
             ) : <ListGroup variant = "flush">
                 {cartItems.map(item => (
                     <ListGroup.Item key = {item.product}>
