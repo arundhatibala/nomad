@@ -13,10 +13,14 @@ const WishScreen = ({ match }) => {
     const wish = useSelector(state => state.wish)
     const { wishItems } = wish
 
-    const startDate = useState(new Date("2022-01-01"))
-    const endDate = useState(new Date("2022-01-01"))
+    const start = useState(new Date("2022-01-01"))[0]
+    const end = useState(new Date("2022-01-01"))[0]
 
-    
+    console.log(start)
+
+    const startDate = start.getDate() +"/"+ (start.getMonth()+1) +"/"+ start.getFullYear()
+    const endDate = end.getDate() +"/"+ (end.getMonth()+1) +"/"+ end.getFullYear()
+
 
     useEffect(() => {
         if (id) {
@@ -40,7 +44,7 @@ const WishScreen = ({ match }) => {
 
     return (
         <Row>
-            <Col md={9}>
+            <Col>
                 <h1>Bucket List</h1>
                 {wishItems.length === 0 ? (
                     <Message>Your bucket list is empty.  <br></br><Link to="/explore">Go back to Explore</Link></Message>
@@ -49,10 +53,13 @@ const WishScreen = ({ match }) => {
                             <ListGroup.Item key={item.product}>
                                 <Row>
                                     <Col md={3}>
-                                        <Image src={item.image} alt={item.name} fluid rounded></Image>
+                                    <Link style={{ textDecoration: 'none' }} to={`/product/${item.product}`}>
+                                        <Image src={item.image} alt={item.name} fluid rounded></Image></Link>
                                     </Col>
                                     <Col md={3}>
-                                        <Link style={{ textDecoration: 'none' }} to={`/product/${item.product}`}>{item.name}</Link>
+                                        <Link style={{ textDecoration: 'none' }} to={`/product/${item.product}`}>
+                                            <h3>{item.name}</h3>
+                                            </Link>
                                     </Col>
                                     <Col md={1}>
                                         <Button type="button" variant='secondary' onClick={() => removeFromWishHandler(item.product)}>
@@ -63,7 +70,7 @@ const WishScreen = ({ match }) => {
                                             <i className="bi bi-compass"></i> Book</Button>
                                     </Col>
                                     <Col md={2}>
-                                    &#8377; {item.price}
+                                    <h5>&#8377; {item.price}</h5>
 
                                     </Col>
                                 </Row>

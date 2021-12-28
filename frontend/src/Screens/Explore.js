@@ -39,8 +39,7 @@ const Explore = () => {
   }
 
   const loca = locationFind.search ? String(locationFind.search.split('=')[1]) : "All Locations"
-  console.log(loca)
-
+  
   const results = fuse.search(query);
   const hotelResults = query ? results.map(hotel => hotel.item) : hotels
 
