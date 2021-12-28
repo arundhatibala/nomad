@@ -45,11 +45,11 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                 {step3 ? (
                     <Nav.Link>
                     <Link to='/placebooking'>
-                        Place Order
+                        Place Booking
                     </Link>
                     </Nav.Link>
                 ) : (
-                <Nav.Link disabled>Place Order</Nav.Link>
+                <Nav.Link disabled>Place Booking</Nav.Link>
                 )}
             </Nav.Item>
         </Nav>

@@ -7,7 +7,7 @@ import users from './data/users.js'
 import hotels from './data/hotels.js'
 import User from './models/userModel.js'
 import Hotel from './models/hotelModel.js'
-import Order from './models/orderModel.js'
+import Booking from './models/bookingModel.js'
 import connectDB from './config/db.js'
 
 dotenv.config()
@@ -15,7 +15,7 @@ connectDB()
 
 const importData = async () => {
     try {
-        await Order.deleteMany()
+        await Booking.deleteMany()
         await User.deleteMany()
         await Hotel.deleteMany()
 
@@ -35,7 +35,7 @@ const importData = async () => {
 
 const destroyData = async () => {
     try {
-        await Order.deleteMany()
+        await Booking.deleteMany()
         await User.deleteMany()
         await Hotel.deleteMany()
 

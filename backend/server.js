@@ -6,6 +6,7 @@ import connectDB from './config/db.js'
 import cookieParser from 'cookie-parser'
 import hotelRoutes from './routes/hotelRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import bookingRoutes from './routes/bookingRoutes.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import { createRequire } from 'module'
 import jwt from 'jsonwebtoken'
@@ -33,6 +34,7 @@ app.get('/', (req,res) => {
 
 app.use('/api/hotels', hotelRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/bookings', bookingRoutes)
 
 app.get('/auth_callback', async function (req, res) {
     const oauth2Client = new OAuth2(CONFIG.oauth2Credentials.client_id, CONFIG.oauth2Credentials.client_secret, CONFIG.oauth2Credentials.redirect_uris[0]);

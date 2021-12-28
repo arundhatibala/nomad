@@ -11,7 +11,7 @@ import {
 } 
     from './reducers/userReducers'
 
-// import {orderCreateReducer, orderDetailsReducer, orderListMyReducer } from './reducers/orderReducers'
+import {bookingCreateReducer, bookingDetailsReducer, bookingListMyReducer } from './reducers/bookingReducers'
 import { wishReducer } from './reducers/wishReducers'
 
 const reducer = combineReducers({
@@ -23,9 +23,9 @@ const reducer = combineReducers({
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
-//     orderCreate: orderCreateReducer,
-//     orderDetails: orderDetailsReducer,
-//     orderListMy: orderListMyReducer,
+    bookingCreate: bookingCreateReducer,
+    bookingDetails: bookingDetailsReducer,
+    bookingListMy: bookingListMyReducer,
     wish: wishReducer
 })
 
@@ -35,7 +35,6 @@ const queryUserInfo = new URL(window.location.href).searchParams.get('setUserInf
  if(queryUserInfo) localStorage.setItem('userInfo', atob(queryUserInfo)) 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
 
-// const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ? JSON.parse(localStorage.getItem('shippingAddress')) : {}
 
 const wishItemsFromStorage = localStorage.getItem('wishItems') ? JSON.parse(localStorage.getItem('wishItems')) : []
 

@@ -1,4 +1,4 @@
-//User profile can be updated from here, can see all details including order history
+//User profile can be updated from here, can see all details including booking history
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Table, Form, Button, Row, Col } from 'react-bootstrap'
@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import Loader from '../Components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
-// import { listMyOrders } from '../actions/orderActions'
+import { listMyBookings } from '../actions/bookingActions'
 
 const Profile = ({  }) => {
     const [name, setName] = useState('')
@@ -26,8 +26,8 @@ const Profile = ({  }) => {
     const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
     const { success } = userUpdateProfile
 
-    // const orderListMy = useSelector((state) => state.orderListMy)
-    // const { loading:loadingOrders, error:errorOrders, orders } = orderListMy
+    const bookingListMy = useSelector((state) => state.bookingListMy)
+    const { loading:loadingBookings, error:errorBookings, bookings } = bookingListMy
 
     let navigate = useNavigate()
     useEffect(() => {
@@ -37,7 +37,7 @@ const Profile = ({  }) => {
         else {
             if(!user.name){
                 dispatch(getUserDetails('profile'))
-                // dispatch(listMyOrders())
+                dispatch(listMyBookings())
             } else {
                 setName(user.name)
                 setEmail(user.email)
@@ -91,9 +91,9 @@ const Profile = ({  }) => {
             </Button>
         </Form>
     </Col>
-    {/* <Col md={9}>
-        <h2>My Orders</h2>
-{loadingOrders ? <Loader/> : errorOrders ? <Message variant='danger'>{errorOrders}</Message> : (
+    <Col md={9}>
+        <h2>My Bookings</h2>
+{loadingBookings ? <Loader/> : errorBookings ? <Message variant='danger'>{errorBookings}</Message> : (
 <Table striped bordered hover responsive classname='table-sm'>
     <thead>
         <tr>
@@ -102,12 +102,12 @@ const Profile = ({  }) => {
         </tr>
     </thead>
     <tbody>
-        {orders.map(order => (
-            <tr key={order._id}>
-                <td>{order._id}</td>
-                <td>{order.totalPrice}</td>
+        {bookings.map(booking => (
+            <tr key={booking._id}>
+                <td>{booking._id}</td>
+                <td>{booking.totalPrice}</td>
                 <td>
-                    <Link to={`/order/${order._id}`}>
+                    <Link to={`/booking/${booking._id}`}>
                         <Button className='btn-sm' variant='light'>Details</Button>
                     </Link>
                 </td>
@@ -116,7 +116,7 @@ const Profile = ({  }) => {
     </tbody>
 </Table>
 )}
-    </Col> */}
+    </Col>
 </Row>
 }
 

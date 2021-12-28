@@ -1,11 +1,10 @@
-//Mocked buy screen - order is free
+//Mocked buy screen - booking is free
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../Components/FormContainer'
 import CheckoutSteps from '../Components/CheckoutSteps'
-// import CheckoutSteps from '../Components/CheckoutSteps'
 
 const Payment = ({ }) => {
 

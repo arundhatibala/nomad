@@ -1,6 +1,6 @@
 //final check before checkout
 import React, { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
@@ -11,17 +11,18 @@ import { createBooking } from '../actions/bookingActions'
 const PlaceBooking = () => {
     // const hotelDetails = useSelector((state) => state.hotelDetails)
     // const { hotel } = hotelDetails
+    const { id } = useParams()
 
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
     let navigate = useNavigate()
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.subtotal * item.qty, 0)
 
-    cart.shippingPrice = cart.itemsPrice > 10000 ? 0 : 100
+    // cart.shippingPrice = cart.itemsPrice > 10000 ? 0 : 100
     cart.taxPrice = Number((0.05 * cart.itemsPrice).toFixed(2))
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.taxPrice)).toFixed(2)
     
-    const bookingCreate = useSelector(state => state.bookingCreate || {} ) // svb thinks this is what is not working.
+    const bookingCreate = useSelector(state => state.bookingCreate) 
     const { booking, success, error } = bookingCreate
     
     useEffect(() => {
@@ -33,14 +34,13 @@ const PlaceBooking = () => {
     const placeBookingHandler = () => {
         
         dispatch(createBooking({
-            bookingItems: cart.cartItems,
+            bookingItems: cart.cartItems ,
             // shippingAddress: cart.shippingAddress,
             itemsPrice: cart.itemsPrice,
             // shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice
         }),
-
         )
         
     }
@@ -50,17 +50,11 @@ const PlaceBooking = () => {
             <Row>
                 <Col md={8}>
                     <ListGroup variant='flush'>
-                        {/* <ListGroup.Item>
-                            <h2>Shipping</h2>
-                            <p>
-                                <strong>Address:</strong>
-                                {cart.shippingAddress.address}, {cart.shippingAddress.city}, {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
-                            </p>
-                        </ListGroup.Item> */}
+                        
 
                         <ListGroup.Item>
                             <h2>Payment Method</h2>
-                            <strong>Your order is on the house!</strong>
+                            <strong>Your booking is on the house!</strong>
                         </ListGroup.Item>
 
                         <ListGroup.Item>

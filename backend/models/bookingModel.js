@@ -1,19 +1,19 @@
 //FIGURE THIS OUT 
-//db model for order data
+//db model for booking data
 
 import mongoose from 'mongoose'
-const orderSchema = mongoose.Schema({
+const bookingSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
     },
-    orderItems: [
+    bookingItems: [
         {
             name: { type: String, required: true },
             qty: { type: Number, required: true },
             image: { type: String, required: true },
-            price: { type: Number, required: true },
+            // price: { type: Number, required: true }, //svb commented to figure out how to work with this
             product: {
                 type: mongoose.Schema.Types.ObjectId,
                 required: true,
@@ -21,12 +21,6 @@ const orderSchema = mongoose.Schema({
             }
         }
     ],
-    shippingAddress: {
-        address: { type: String, required: true },
-        city: { type: String, required: true },
-        postalCode: { type: String, required: true },
-        country: { type: String, required: true }
-    },
     paymentResult: {
         id: { type: String },
         status: { type: String },
@@ -34,11 +28,6 @@ const orderSchema = mongoose.Schema({
         email_address: { type: String }
     },
     taxPrice: {
-        type: Number,
-        required: true,
-        default: 0.0
-    },
-    shippingPrice: {
         type: Number,
         required: true,
         default: 0.0
@@ -68,6 +57,6 @@ const orderSchema = mongoose.Schema({
     timestamps: true
 })
 
-const Order = mongoose.model('Order', orderSchema)
+const Booking = mongoose.model('Booking', bookingSchema)
 
-export default Order
+export default Booking
