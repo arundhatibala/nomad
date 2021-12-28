@@ -1,4 +1,3 @@
-//FIGURE THIS OUT 
 //db model for booking data
 
 import mongoose from 'mongoose'
@@ -15,7 +14,7 @@ const bookingSchema = mongoose.Schema({
             image: { type: String, required: true },
             startDate: { type: String, required: true },
             endDate: { type: String, required: true },
-            subtotal: { type: Number, required: true }, //svb commented to figure out how to work with this
+            subtotal: { type: Number, required: true },
             product: {
                 type: mongoose.Schema.Types.ObjectId,
                 required: true,

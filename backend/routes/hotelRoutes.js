@@ -1,3 +1,5 @@
+//routes for hotels -> all hotels, particular hotel, particular hotel review
+
 import express from 'express'
 const router = express.Router()
 import { getHotels, getHotelById, createHotelReview } from '../controllers/hotelController.js'

@@ -19,7 +19,7 @@ const Header = () => {
   }
     return (
         <header style= {{backgroundColor: 'rgba(255, 255, 255, 0)'}}>
-            <Navbar collapseOnSelect expand="lg" variant="dark" style = {{padding: '10px 5px'}}>
+            <Navbar collapseOnSelect expand="lg" variant="dark" fix="top" style = {{padding: '10px 5px'}}>
   <Container style = {{padding: '0px 12px'}}>
   <Navbar.Brand href= "/" style ={{fontFamily:'Readex Pro', fontSize: '20px'}}>nomad.</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />

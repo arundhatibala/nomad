@@ -1,3 +1,5 @@
+//route controllers for hotels
+
 import asyncHandler from 'express-async-handler'
 import Hotel from '../models/hotelModel.js'
 
@@ -49,4 +51,4 @@ const createHotelReview = asyncHandler(async (req, res) => {
     }
 })
 
-export {getHotels, getHotelById, createHotelReview}
+export { getHotels, getHotelById, createHotelReview }

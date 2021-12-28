@@ -42,7 +42,7 @@ const BookingConfirmation = ( {match} ) => {
 
                         <ListGroup.Item>
                             <h2>Payment Method</h2>
-                            <strong>Your booking is on the house!</strong>
+                            <strong>Due to our New Year discount offer, your booking is on the house!</strong>
                         </ListGroup.Item>
 
                         <ListGroup.Item>

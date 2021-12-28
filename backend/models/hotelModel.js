@@ -20,7 +20,7 @@ const hotelSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
-    }, //i don't need this
+    }, 
     name: {
         type: String,
         required: true
@@ -61,17 +61,14 @@ const hotelSchema = mongoose.Schema({
     },
     single_qty: {
         type: Number,
-        //required: true,
         default: 0
     },
     studio_qty: {
         type: Number,
-        //required: true,
         default: 0
     },
     suite_qty: {
         type: Number,
-        //required: true,
         default: 0
     },
     tag: {

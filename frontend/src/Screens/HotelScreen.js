@@ -227,19 +227,6 @@ const HotelScreen = ({ match }) => {
                     <p>{hotel.amenities}</p>
                 </Col>
             </Row>
-            <Row>
-                <br></br>
-                <br></br>
-                <br></br>
-                <center><h4>Hotels in the vicinity:</h4></center>
-                <br></br>
-                <iframe
-                    width='100%'
-                    height='400px'
-                    src={mapLink}
-                    title="tokyo-hotels" style={{ border: "none" }}>
-                </iframe>
-            </Row>
             <br></br>
             <Row>
                 <Col md={6}>
@@ -282,6 +269,20 @@ const HotelScreen = ({ match }) => {
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
+            </Row>
+            <br></br>
+            <Row>
+                <br></br>
+                <br></br>
+                <br></br>
+                <center><h4>Hotels in the vicinity:</h4></center>
+                <br></br>
+                <iframe
+                    width='100%'
+                    height='400px'
+                    src={mapLink}
+                    title="tokyo-hotels" style={{ border: "none" }}>
+                </iframe>
             </Row>
         </>
     )

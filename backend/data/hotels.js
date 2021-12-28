@@ -1,3 +1,5 @@
+//hotel info that serves as seeder data for initial data population
+
 const hotels = [
   {
     name: "INK Hotel",

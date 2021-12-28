@@ -1,3 +1,5 @@
+//route controllers from bookings
+
 import asyncHandler from 'express-async-handler'
 import Booking from '../models/bookingModel.js'
 
@@ -13,7 +15,7 @@ const addBookingItems = asyncHandler(async (req, res) => {
     }
     else {
         const booking = new Booking({
-            bookingItems, user: req.user._id,  itemsPrice, taxPrice, totalPrice
+            bookingItems, user: req.user._id, itemsPrice, taxPrice, totalPrice
         })
 
         const createdBooking = await booking.save()
