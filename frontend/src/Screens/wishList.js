@@ -16,6 +16,8 @@ const WishScreen = ({ match }) => {
     const startDate = useState(new Date("2022-01-01"))
     const endDate = useState(new Date("2022-01-01"))
 
+    
+
     useEffect(() => {
         if (id) {
             dispatch(addToWish(id))
@@ -33,7 +35,7 @@ const WishScreen = ({ match }) => {
         roomPrice = (wishItems.filter((p) => p.product === id)[0]).price
         dispatch(removeFromWish(id))
         dispatch(addToCart(id, 1, startDate, endDate, roomPrice, "Single"))
-        navigate(`/bookings?qty=1&start=2022-01-01T00:00:00.000Z&end=2022-01-01T00:00:00.000Z&subtotal=${roomPrice}.00&room=Single`)
+        navigate(`/bookings`)
     }
 
     return (

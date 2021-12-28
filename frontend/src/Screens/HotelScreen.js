@@ -31,8 +31,6 @@ const HotelScreen = ({ match }) => {
     const startDate = start.getDate() +"/"+ start.getMonth() +"/"+ start.getFullYear()
     const endDate = end.getDate() +"/"+ end.getMonth() +"/"+ end.getFullYear()
 
-    console.log(startDate)
-
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
