@@ -9,21 +9,6 @@ import { addToWish } from '../actions/wishActions'
 
 const CartScreen = ({}) => {
     const { id } = useParams()
-    // let location = useLocation()
-    // const query = location.search ? (location.search.split('=')) : []
-    // let start = location.search && query[2].substring(0,24)
-    // let end = location.search && query[3].substring(0,24) 
-    // const subtotal = location.search && query[4].split('&')[0]
-    // const qty = location.search ? query[1].substring(0,1) : 1
-    // const room = location.search && query[5] 
-
-    // let temp = start.split(/\D+/);
-
-    // const startDate = Date.UTC([0], --temp[1], temp[2], temp[3], temp[4], temp[5], temp[6])
-
-    //  temp = end.split(/\D+/);
-
-    //  const endDate = Date.UTC([0], --temp[1], temp[2], temp[3], temp[4], temp[5], temp[6])
 
     const dispatch = useDispatch()
 
@@ -49,7 +34,7 @@ const checkoutHandler = () => {
 
     return (
         <>
-            <Row style = {{paddingTop:"40px"}}>
+            <Row>
            <Col>
             <h1>Bookings</h1>
             <br></br>
@@ -125,7 +110,6 @@ const checkoutHandler = () => {
                 <ListGroup variant = 'flush'>
                     <ListGroup.Item>
                         <h2>Subtotal ({cartItems.reduce((acc, item)=> acc + item.qty, 0)}) rooms booked</h2>
-                        {/* <h3>&#8377; {cartItems.reduce((acc, item) => acc + item.subtotal, 0).toFixed(2)}*</h3> */}
                         <h6>*Taxes not included</h6>
                     </ListGroup.Item>
                     <ListGroup.Item>

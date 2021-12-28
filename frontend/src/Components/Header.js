@@ -31,15 +31,15 @@ const Header = () => {
     <Nav>
     <Nav.Link href = "/explore" className = "bi bi-search"></Nav.Link>
     {userInfo ? (
-      <NavDropdown title={userInfo.name} id='username'>
+      <NavDropdown style ={{zIndex:"2", position:"relative"}}title={userInfo.name} id="basic-nav-dropdown">
         <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
-        <NavDropdown.Item href='/bucketlist'>Bucket List</NavDropdown.Item>
         <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
       </NavDropdown>
       ) : 
       <Nav.Link href = "/login" className = "bi bi-person-circle"></Nav.Link>
     }
     {userInfo && <Nav.Link href = "/bookings" className = "bi bi-compass"></Nav.Link>}
+    {userInfo && <Nav.Link href = "/bucketlist" className = "bi bi-heart"></Nav.Link>}
     </Nav>
   </Navbar.Collapse>
   </Container>

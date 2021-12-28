@@ -51,7 +51,7 @@ const Login = ({ }) => {
                 <a href={data}>       
                     <img src = {Google}></img>
                 </a>
-                {/* <a href={data} style={{textDecoration: "none"}}>Sign In With Google</a> */}
+        
                 </Button>
                 <h4>or</h4></center>
             <Form onSubmit={submitHandler}>

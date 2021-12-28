@@ -18,7 +18,7 @@ const Register = ({ }) => {
 
     const dispatch = useDispatch()
     
-    const userRegister = useSelector(state => state.userRegister) // svb here
+    const userRegister = useSelector(state => state.userRegister)
     const { loading, error, userInfo, success } = userRegister
 
     let navigate = useNavigate()

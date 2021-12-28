@@ -6,8 +6,6 @@ import BuenosAires from '../Cards/BuenosAires.png'
 import Tokyo from '../Cards/Tokyo.png'
 import NYC from '../Cards/NYC.png'
 import {Link} from 'react-router-dom'
-// import CapeTown from '../Cards/Capetown.png'
-// import mainImage from '../Cards/mainImage.jpg'
 const Home = () => {
 
     return (
@@ -45,16 +43,6 @@ const Home = () => {
                 </Card.ImgOverlay>
         </Card></Link>
             </Col>
-            {/* <Col style = {{padding: "5px"}}>
-                <Card className = "px-1 py-1" style = {{marginTop: "50px", borderRadius:"0px"}}>
-                <Card.Img src = {CapeTown} style = {{borderRadius:"0px"}}/>
-                <Card.ImgOverlay className = "overlay" style = {{borderRadius:"0px"}}>
-                    <Container style = {{margin: "0px", padding: "0px", borderRadius:"0"}}>
-                        <h4 className = "overlayText">Cape Town</h4>
-                    </Container>
-                </Card.ImgOverlay>
-        </Card>
-        </Col>  */}
             <Col style = {{padding: "5px"}}>
             <Link to = '/explore?location=nyc'>
                 <Card className = "px-1 py-1" style = {{marginTop: "30px", borderRadius:"0px"}}>

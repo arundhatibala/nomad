@@ -29,8 +29,8 @@ const BookingConfirmation = ( {match} ) => {
     }, [booking, id])
 
     return loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : <>
-        <h1>Booking Confirmation {booking._id}</h1>
-        <Row>
+        <h1 style = {{paddingTop:"30px"}}>Booking Confirmation {booking._id}</h1>
+        <Row style = {{paddingTop:"30px"}}>
                 <Col md={9}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>

@@ -9,16 +9,12 @@ import { createBooking } from '../actions/bookingActions'
 
 
 const PlaceBooking = () => {
-    // const hotelDetails = useSelector((state) => state.hotelDetails)
-    // const { hotel } = hotelDetails
     const { id } = useParams()
 
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
     let navigate = useNavigate()
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.subtotal * item.qty, 0)
-
-    // cart.shippingPrice = cart.itemsPrice > 10000 ? 0 : 100
     cart.taxPrice = Number((0.05 * cart.itemsPrice).toFixed(2))
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.taxPrice)).toFixed(2)
     
@@ -35,9 +31,7 @@ const PlaceBooking = () => {
         
         dispatch(createBooking({
             bookingItems: cart.cartItems ,
-            // shippingAddress: cart.shippingAddress,
             itemsPrice: cart.itemsPrice,
-            // shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice
         }),
@@ -96,12 +90,6 @@ const PlaceBooking = () => {
                                     <Col>&#8377;{cart.itemsPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
-                            {/* <ListGroup.Item>
-                                <Row>
-                                    <Col>Shipping</Col>
-                                    <Col>&#8377;{cart.shippingPrice}</Col>
-                                </Row>
-                            </ListGroup.Item> */}
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Tax (5%)</Col>
