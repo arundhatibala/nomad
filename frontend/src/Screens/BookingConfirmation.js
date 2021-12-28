@@ -31,7 +31,7 @@ const BookingConfirmation = ( {match} ) => {
     return loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : <>
         <h1>Booking Confirmation {booking._id}</h1>
         <Row>
-                <Col md={8}>
+                <Col md={9}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>Booking Details</h2>
@@ -72,7 +72,7 @@ const BookingConfirmation = ( {match} ) => {
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
-                <Col md={4}>
+                <Col md={3}>
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
