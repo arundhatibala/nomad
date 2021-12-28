@@ -1,12 +1,12 @@
 # nomad.
 > Mini-Project 2 for [CS-1202] Advanced Programming.
-> This is a MERN stack e-commerce website. 
+> This is a MERN stack e-travel website. 
 > This project was built by [Arundhati Balasubramaniam](https://github.com/arundhati-bala), [Medini Chopra](https://github.com/medinichopra), and [Siddh Veer Bakshi](https://github.com/sxddhvxxr).
 
 ## Getting Started
 After opening the CLI, run the following commands:
 ```
-$ git clone https://github.com/indiandesigncollective/home.git
+$ git clone https://github.com/arundhati-bala/nomad.git
 $ cd home
 $ npm i
 
@@ -34,7 +34,7 @@ More Specifically,
 <tbody>
 	<tr>
 		<td>Front-End</td>
-		<td>React, React-Bootstrap, CSS3</td>
+		<td>React, React-Bootstrap, CSS3, MapBox API</td>
 	</tr>
 	<tr>
 		<td>Authentication</td>
@@ -62,7 +62,7 @@ More Specifically,
 | Siddh Veer Bakshi         | Frontend, LoginScreen, Checkout Process, Register Screen                                    |
 
 ## Design Assets
-The favicon and sliders can be found [here](https://www.figma.com/file/JLMuFR3XpMZfWSkbSE9UVw/IDC-Design-Assets?node-id=0%3A1).
+The background can be found [here](https://www.figma.com/file/rvnoV4WKXs0ZMmaMpqTOby/Untitled?node-id=2%3A15).
 ## Citations
-All product information was scraped from [Chumbak](chumbak.com). <br>
-Bootstrap theme used was [Minty](https://bootswatch.com/minty/) by Bootswatch.
+All product information was scraped from [Tripadvisor](tripadvisor.com). <br>
+Bootstrap theme used was [Quartz](https://bootswatch.com/quartz/) by Bootswatch.
