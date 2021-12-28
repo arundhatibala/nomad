@@ -9,8 +9,8 @@ import { createBooking } from '../actions/bookingActions'
 
 
 const PlaceBooking = () => {
-    const hotelDetails = useSelector((state) => state.hotelDetails)
-    const { hotel } = hotelDetails
+    // const hotelDetails = useSelector((state) => state.hotelDetails)
+    // const { hotel } = hotelDetails
 
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
@@ -19,9 +19,9 @@ const PlaceBooking = () => {
 
     cart.shippingPrice = cart.itemsPrice > 10000 ? 0 : 100
     cart.taxPrice = Number((0.05 * cart.itemsPrice).toFixed(2))
-    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
+    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.taxPrice)).toFixed(2)
     
-    const bookingCreate = useSelector(state => state.bookingCreate || {})
+    const bookingCreate = useSelector(state => state.bookingCreate || {} ) // svb thinks this is what is not working.
     const { booking, success, error } = bookingCreate
     
     useEffect(() => {
@@ -31,16 +31,18 @@ const PlaceBooking = () => {
     }, [success])
 
     const placeBookingHandler = () => {
+        
         dispatch(createBooking({
             bookingItems: cart.cartItems,
-            shippingAddress: cart.shippingAddress,
+            // shippingAddress: cart.shippingAddress,
             itemsPrice: cart.itemsPrice,
-            shippingPrice: cart.shippingPrice,
+            // shippingPrice: cart.shippingPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice
         }),
 
         )
+        
     }
     return (
         <>
@@ -114,6 +116,7 @@ const PlaceBooking = () => {
                                 <Row>
                                     <Col>Total</Col>
                                     <Col>&#8377;{cart.totalPrice}</Col>
+                                    
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>

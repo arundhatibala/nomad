@@ -15,6 +15,7 @@ import Bookings from './Screens/Bookings'
 import Wishlist from './Screens/wishList'
 import Payment from './Screens/Payment'
 import PlaceBooking from './Screens/PlaceBooking'
+import BookingConfirmation from './Screens/BookingConfirmation'
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path='/hotel/:id' element={<HotelScreen />} />
         <Route path='/payment' element={<Payment />} />
         <Route path='/placebooking' element={<PlaceBooking />} />
+        <Route path='/booking/:id' element={<BookingConfirmation />} />
       </Routes>
     </Container>
     </main> 
