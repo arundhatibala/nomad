@@ -23,7 +23,7 @@ export const bookingCreateReducer = (state = {}, action) => {
     }
 }
 
-export const bookingDetailsReducer = (state = { loading: true, bookingItems: [], shippingAddress: {} }, action) => {
+export const bookingDetailsReducer = (state = { loading: true, bookingItems: [] }, action) => {
     switch(action.type) {
         case BOOKING_DETAILS_REQUEST:
             return {

@@ -28,8 +28,8 @@ const HotelScreen = ({ match }) => {
     const [start, setStartDate] = useState(new Date("2022-01-01"))
     const [end, setEndDate] = useState(new Date("2022-01-01"))
 
-    const startDate = start.getDate() +"/"+ start.getMonth() +"/"+ start.getFullYear()
-    const endDate = end.getDate() +"/"+ end.getMonth() +"/"+ end.getFullYear()
+    const startDate = start.getDate() +"/"+ (start.getMonth()+1) +"/"+ start.getFullYear()
+    const endDate = end.getDate() +"/"+ (end.getMonth()+1) +"/"+ end.getFullYear()
 
 
     const userLogin = useSelector(state => state.userLogin)

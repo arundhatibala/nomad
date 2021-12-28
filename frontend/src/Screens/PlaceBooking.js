@@ -48,7 +48,7 @@ const PlaceBooking = () => {
         <>
         <CheckoutSteps step1 step2 step3/>
             <Row>
-                <Col md={8}>
+                <Col md={9}>
                     <ListGroup variant='flush'>
                         
 
@@ -66,14 +66,16 @@ const PlaceBooking = () => {
                                     <Col md={3}>
                                         <Image src={item.image} alt={item.name} fluid rounded />
                                     </Col>
-
-                                    <Col>
-                                    <Link to={`/hotel/${item.product}`}>
-                                        {item.name}: {item.room} room.
+                                    <Col md = {3}>
+                                    <Link  as = "h6" style = {{textDecoration:"none"}}to={`/hotel/${item.product}`}>
+                                        {item.name}
                                     </Link>
                                         </Col>
-
-                                    <Col md={4}>
+                                        <Col md = {2}>Check In: <br></br>
+                                    {item.startDate}</Col> 
+                                    <Col md= {2}>Check Out: <br></br>
+                                    {item.endDate}</Col>
+                                    <Col md={2}>
                                         {item.qty} x &#8377;{item.subtotal} = &#8377;{item.qty * item.subtotal} 
                                     </Col>
                                 </Row>
@@ -82,7 +84,7 @@ const PlaceBooking = () => {
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
-                <Col md={4}>
+                <Col md={3}>
                     <Card>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>

@@ -13,7 +13,9 @@ const bookingSchema = mongoose.Schema({
             name: { type: String, required: true },
             qty: { type: Number, required: true },
             image: { type: String, required: true },
-            // price: { type: Number, required: true }, //svb commented to figure out how to work with this
+            startDate: { type: String, required: true },
+            endDate: { type: String, required: true },
+            subtotal: { type: Number, required: true }, //svb commented to figure out how to work with this
             product: {
                 type: mongoose.Schema.Types.ObjectId,
                 required: true,

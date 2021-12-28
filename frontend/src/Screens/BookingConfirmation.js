@@ -18,7 +18,7 @@ const BookingConfirmation = ( {match} ) => {
     const { booking, loading, error } = bookingDetails
     
     if(!loading){
-        booking.itemsPrice = booking.bookingItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+        booking.itemsPrice = booking.bookingItems.reduce((acc, item) => acc + item.subtotal * item.qty, 0)
     
     }
     useEffect(() => {
@@ -51,18 +51,20 @@ const BookingConfirmation = ( {match} ) => {
                             <ListGroup variant='flush'> {booking.bookingItems.map((item, index) => (
                                 <ListGroup.Item key={index}> 
                                 <Row>
-                                    <Col md={1}>
+                                    <Col md={3}>
                                         <Image src={item.image} alt={item.name} fluid rounded />
                                     </Col>
-
-                                    <Col>
-                                    <Link to={`/product/${item.product}`}>
+                                    <Col md = {3}>
+                                    <Link  as = "h6" style = {{textDecoration:"none"}}to={`/hotel/${item.product}`}>
                                         {item.name}
                                     </Link>
                                         </Col>
-
-                                    <Col md={4}>
-                                        {item.qty} x &#8377;{item.subtotal} = &#8377;{item.qty * item.price} 
+                                        <Col md = {2}>Check In: <br></br>
+                                    {item.startDate}</Col> 
+                                    <Col md= {2}>Check Out: <br></br>
+                                    {item.endDate}</Col>
+                                    <Col md={2}>
+                                        {item.qty} x &#8377;{item.subtotal} = &#8377;{item.qty * item.subtotal} 
                                     </Col>
                                 </Row>
                                 </ListGroup.Item>
