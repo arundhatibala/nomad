@@ -246,14 +246,14 @@ const HotelScreen = ({ match }) => {
                             {userInfo ? (<Form onSubmit={submitHandler}>
                                 <Form.Group controlId='rating'>
                                     <Form.Label>Rating</Form.Label>
-                                    <Form.Control as='select' value={rating} onChange={(e) => setRating(e.target.value)}>
+                                    <Form.Select as='select' value={rating} onChange={(e) => setRating(e.target.value)}>
                                         <option value=''>Select...</option>
                                         <option value='1'>1 - Poor</option>
                                         <option value='2'>2 - Fair</option>
                                         <option value='3'>3 - Good</option>
                                         <option value='4'>4 - Very Good</option>
                                         <option value='5'>5 - Excellent</option>
-                                    </Form.Control>
+                                    </Form.Select>
                                 </Form.Group>
                                 <br></br>
                                 <Form.Group controlId='comment'>
