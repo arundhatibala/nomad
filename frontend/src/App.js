@@ -1,6 +1,6 @@
 import React from 'react'
 import background from "./background.png"
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as BrowserRouter, Route, Routes} from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import Header from '../../frontend/src/Components/Header'
 import Footer from '../../frontend/src/Components/Footer'
@@ -19,7 +19,7 @@ import BookingConfirmation from './Screens/BookingConfirmation'
 const App = () => {
   return (
     <div style={{ backgroundImage: `url(${background})` , backgroundAttachment:'fixed'}}>
-    <Router>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Header />
     <main>
       <Container>
@@ -40,7 +40,7 @@ const App = () => {
     </Container>
     </main> 
     <Footer />
-    </Router>
+    </BrowserRouter>
     </div>
   )
 }

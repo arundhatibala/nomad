@@ -32,6 +32,15 @@ app.use('/api/hotels', hotelRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/bookings', bookingRoutes)
 
+if(process.env.NODE_ENV=== 'production')
+{
+    app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+    app.get('*',(req,res) => 
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+    )
+}
+
 app.get('/auth_callback', async function (req, res) {
     const oauth2Client = new OAuth2(CONFIG.oauth2Credentials.client_id, CONFIG.oauth2Credentials.client_secret, CONFIG.oauth2Credentials.redirect_uris[0]);
     if (req.query.error) {
