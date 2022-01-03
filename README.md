@@ -57,9 +57,9 @@ More Specifically,
 
 | Member                    | Contribution                                                                                            |
 |---------------------------|---------------------------------------------------------------------------------------------------------|
-| Arundhati Balasubramaniam | Frontend, Fuzzy Search, Cart, Wishlist, ProductScreen, Maps, Home+CategoryScreen, SearchScreen, Recommendation|
-| Medini Chopra             | Backend, Databasing, RestAPIs, Server, ProfileScreen, OAuth, UserAuth, Reviews                                   |
-| Siddh Veer Bakshi         | Frontend, LoginScreen, Checkout Process, Register Screen                                    |
+| Arundhati Balasubramaniam | Frontend, Fuzzy Search, Cart, Wishlist, HotelScreen, MapBox, Home+Category, Explore, Recommendation|
+| Medini Chopra             | Backend+RestAPIs, Server, OAuth, UserAuth, Reviews                                   |
+| Siddh Veer Bakshi         | Frontend, Login, Checkout Process, Register, Profile                                 |
 
 ## Design Assets
 The background can be found [here](https://www.figma.com/file/rvnoV4WKXs0ZMmaMpqTOby/Untitled?node-id=2%3A15).
