@@ -11,17 +11,17 @@ const Home = () => {
     return (
         <>
         <center>
-         <div className = "centered">   
+         <div className = "centered d-flex">   
         <Fade cascade duration={4000}>
-        <h1 style ={{fontSize:"180px", margin: "50px 0px 0px 0px"}}>nomad.</h1>
-        <h1 style ={{fontSize:"25px", margin: "0px"}}>belong anywhere</h1>
+        <h1 style ={{fontSize:"12vw"}}>nomad.</h1>
+        <h1 style ={{fontSize:"2.5vw", margin: "0px"}}>belong anywhere</h1>
         </Fade>
         </div>
         </center>
-        <Row style ={{marginTop: "840px"}}>
+        <Row style ={{marginTop: "840px", padding:"20px"}}>
             <h1 style = {{color:"rgba(0,0,0,0)"}}id= "destinations">anchor</h1>
             <h2 style ={{padding:"0px", margin:"0px"}}>destinations.</h2>
-            <Col style = {{padding: "5px", margin:"0px"}}>
+            <Col style = {{padding: "5px", margin:"0px"}} s={12} md={6} lg={4} xl={3}>
             <Link to = '/explore?location=amsterdam'>
                 <Card className = "px-1 py-1" style = {{marginTop: "30px", borderRadius:"0px"}}>
                 <Card.Img src = {Amsterdam} style = {{borderRadius:"0px"}}/>
@@ -32,7 +32,7 @@ const Home = () => {
                 </Card.ImgOverlay>
         </Card></Link>
             </Col>
-            <Col style = {{padding: "5px"}}>
+            <Col style = {{padding: "5px", margin:"0px"}} s={12} md={6} lg={4} xl={3}>
             <Link to = '/explore?location=buenosaires'>
                 <Card className = "px-1 py-1" style = {{marginTop: "30px", borderRadius:"0px"}}>
                 <Card.Img src = {BuenosAires} style = {{borderRadius:"0px"}}/>
@@ -43,7 +43,7 @@ const Home = () => {
                 </Card.ImgOverlay>
         </Card></Link>
             </Col>
-            <Col style = {{padding: "5px"}}>
+            <Col style = {{padding: "5px", margin:"0px"}} s={12} md={6} lg={4} xl={3}>
             <Link to = '/explore?location=nyc'>
                 <Card className = "px-1 py-1" style = {{marginTop: "30px", borderRadius:"0px"}}>
                 <Card.Img src = {NYC} style = {{borderRadius:"0px"}}/>
@@ -54,7 +54,7 @@ const Home = () => {
                 </Card.ImgOverlay>
         </Card></Link>
             </Col>
-            <Col style = {{padding: "5px"}}>
+            <Col style = {{padding: "5px", margin:"0px"}} s={12} md={6} lg={4} xl={3}>
             <Link to = '/explore?location=tokyo'>
                 <Card className = "px-1 py-1" style = {{marginTop: "30px", borderRadius:"0px"}}>
                 <Card.Img src = {Tokyo} style = {{borderRadius:"0px"}}/>
