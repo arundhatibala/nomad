@@ -168,7 +168,7 @@ const Explore = () => {
           <Toast.Body>
             We noticed you've been looking at <strong>{toastItem.name}</strong>. 
             <br></br>
-            Use coupon code <strong>"NOMAD15OFF"</strong> for 15% off on a stay at {toastItem.name}!
+            Use coupon code <strong>"NOMAD20OFF"</strong> for 20% off on a stay at {toastItem.name}!
           </Toast.Body>
           </a>
         </Toast>
