@@ -19,7 +19,7 @@ const CartScreen = ({}) => {
     let navigate = useNavigate()
 
 const checkoutHandler = () => {
-        navigate('/login?redirect=/payment')
+        navigate('/login?redirect=/placebooking')
     }
 
     const removeFromCartHandler  = (id) => {
