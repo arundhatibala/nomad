@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Toast, Image } from 'react-bootstrap'
 import Hotel from '../Components/Hotel'
 //Displays all hotels and uses fuzzy search, location filter and sorting
 import Message from '../Components/Message'
@@ -9,16 +9,26 @@ import { listHotels } from '../actions/hotelActions'
 import { Form } from 'react-bootstrap'
 import Fuse from "fuse.js"
 import { useLocation } from 'react-router'
+import favicon from "../favicon-32x32.png"
 
 const Explore = () => {
   const dispatch = useDispatch()
+  const userLogin = useSelector(state => state.userLogin)
+  const {userInfo} = userLogin
+  const wish = useSelector(state => state.wish)
+  const { wishItems } = wish
   const hotelList = useSelector(state => state.hotelList)
   const { loading, error, hotels } = hotelList
   let locationFind = useLocation()
 
+  const toastItem = wishItems[0]
+  console.log(toastItem)
+
   const [query, updateQuery] = useState('');
   let [loc, setLocation] = useState('All Locations')
   const [sort, setSort] = useState('')
+  const [showA, setShowA] = useState(true);
+  const toggleShowA = () => setShowA(!showA);
 
   useEffect(() => {
     dispatch(listHotels())
@@ -44,7 +54,6 @@ const Explore = () => {
   const hotelResults = query ? results.map(hotel => hotel.item) : hotels
 
   let locResults = hotelResults
-  console.log(loc)
 
   if(loca === "nyc" || loc === "nyc")
   {
@@ -133,7 +142,37 @@ const Explore = () => {
               <Hotel hotel={hotel} />
             </Col>
           ))}
-        </Row>}
+        </Row>
+        }
+        <br></br>
+        {userInfo && wishItems.length!==0 &&
+    //    <Toast variant = "info" style ={{position:"sticky", bottom:"20px", left:"20px"}}>
+    //     <Toast.Header>
+    //     <img src={favicon} className="rounded me-2" alt="" />
+    //     <strong className="me-auto">nomad hotels.</strong>
+    //     <small>Analytics</small>
+    //     </Toast.Header>
+    //   <Toast.Body>We noticed you've been looking at {toastItem.name}. Currently, we are offering 15% off!</Toast.Body>
+    // </Toast>
+    <Toast show={showA} onClose={toggleShowA} style = {{position:"sticky", bottom:"20px", left:"10px", backgroundColor:"rgba(43, 69, 89, 0.8)"}}>
+          <Toast.Header>
+            <img
+              src={favicon}
+              className="rounded me-2"
+              alt=""
+            />
+            <strong className="me-auto">nomad.</strong>
+            <small>Analytics</small>
+          </Toast.Header>
+          <a href = {`/hotel/${toastItem._id}`} style = {{textDecoration:"none"}}>
+          <Toast.Body>
+            We noticed you've been looking at <strong>{toastItem.name}</strong>. 
+            <br></br>
+            Use coupon code <strong>"NOMAD15OFF"</strong> for 15% off on a stay at {toastItem.name}!
+          </Toast.Body>
+          </a>
+        </Toast>
+    }
     </>
   )
 }

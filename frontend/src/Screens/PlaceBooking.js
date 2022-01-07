@@ -1,7 +1,7 @@
 //final check before checkout
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { Button, Row, Col, ListGroup, Image, Card} from 'react-bootstrap'
+import { Button, Row, Col, ListGroup, Image, Card, Form, FloatingLabel} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../Components/Message'
 import CheckoutSteps from '../Components/CheckoutSteps'
@@ -10,7 +10,6 @@ import { createBooking } from '../actions/bookingActions'
 
 const PlaceBooking = () => {
     const { id } = useParams()
-
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
     let navigate = useNavigate()
@@ -20,6 +19,8 @@ const PlaceBooking = () => {
     
     const bookingCreate = useSelector(state => state.bookingCreate) 
     const { booking, success, error } = bookingCreate
+
+    const [coupon, setCoupon] = useState('')
     
     useEffect(() => {
         if(success) {
@@ -29,14 +30,23 @@ const PlaceBooking = () => {
 
     const placeBookingHandler = () => {
         
-        dispatch(createBooking({
+        dispatch(createBooking( coupon !== "NOMAD20OFF" ?
+            {
             bookingItems: cart.cartItems ,
             itemsPrice: cart.itemsPrice,
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice
-        }),
+        } : 
+        {
+            bookingItems: cart.cartItems ,
+            itemsPrice: Number(cart.itemsPrice*0.8).toFixed(2),
+            taxPrice: Number(cart.taxPrice*0.8).toFixed(2),
+            totalPrice: Number(cart.totalPrice*0.8).toFixed(2)
+        }
+        ),
         )
-        
+    
+
     }
     return (
         <>
@@ -44,13 +54,10 @@ const PlaceBooking = () => {
             <Row>
                 <Col md={9}>
                     <ListGroup variant='flush'>
-                        
-
                         <ListGroup.Item>
                             <h2>Payment Method</h2>
                             <strong>Your booking is on the house!</strong>
                         </ListGroup.Item>
-
                         <ListGroup.Item>
                             <h2>Rooms</h2>
                             {cart.cartItems.length === 0 ? <Message>Your cart is empty!</Message> :
@@ -87,25 +94,47 @@ const PlaceBooking = () => {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Rooms</Col>
-                                    <Col>&#8377;{cart.itemsPrice}</Col>
+                                    {coupon !== "NOMAD20OFF" ?
+                                    <Col> 
+                                    &#8377;{cart.itemsPrice}
+                                    </Col>:
+                                    <Col>
+                                    &#8377;{(cart.itemsPrice*0.8).toFixed(2)}
+                                    </Col>
+                                    }
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Tax (5%)</Col>
-                                    <Col>&#8377;{cart.taxPrice}</Col>
+                                    {coupon !== "NOMAD20OFF" ?
+                                    <Col>&#8377;{cart.taxPrice}</Col>:
+                                    <Col>
+                                    &#8377;{(cart.taxPrice*0.8).toFixed(2)}
+                                    </Col>}
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Total</Col>
-                                    <Col>&#8377;{cart.totalPrice}</Col>
-                                    
+                                    {coupon !== "NOMAD20OFF" ?
+                                    <Col>&#8377;{cart.totalPrice}</Col>:
+                                    <Col>
+                                    &#8377;{(cart.totalPrice*0.8).toFixed(2)}
+                                    </Col>}
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                {error && <Message variant='danger'>{error}</Message>}
-                            </ListGroup.Item>
+                                <Row>
+                                <FloatingLabel 
+                                controlId='CouponCode'
+                                label="Coupon Code"
+                                >
+                                <Form.Control className = "form-floating" type='text' placeholder='Enter Coupon Code' value={coupon} onChange={(e) => setCoupon(e.target.value)}>
+                                 </Form.Control>
+                            </FloatingLabel>
+                                </Row>
+                                </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                 <button type='button' className="btn btn-outline-dark" disabled={cart.cartItems === 0} onClick={placeBookingHandler}>Place Booking</button>

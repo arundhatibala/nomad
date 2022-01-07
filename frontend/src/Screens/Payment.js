@@ -25,7 +25,7 @@ const Payment = ({ }) => {
         <br></br><br></br>
         <h1>Payment Method</h1>
         <Form onSubmit={submitHandler}>
-            <h3>Your bookings have been covered by the house!</h3>
+            <h3>Your bookings is on the house!</h3>
             <Button type='submit' variant='primary'>
                 Continue
             </Button>

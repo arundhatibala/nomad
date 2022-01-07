@@ -87,7 +87,7 @@ const BookingConfirmation = ( {match} ) => {
                             
                             <ListGroup.Item>
                                 <Row>
-                                    <Col>Tax (15%)</Col>
+                                    <Col>Tax (5%)</Col>
                                     <Col>&#8377;{booking.taxPrice}</Col>
                                 </Row>
                             </ListGroup.Item>

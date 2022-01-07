@@ -54,7 +54,7 @@ const Login = ({ }) => {
         
                 </Button>
                 <h4>or</h4></center>
-            <Form onSubmit={submitHandler}>
+                <Form onSubmit={submitHandler}>
                 <FloatingLabel 
                 controlId='email'
                 label="Email Address"
