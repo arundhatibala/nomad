@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Row, Col, Toast, Image } from 'react-bootstrap'
+import { Row, Col, Toast, Image, Alert, Button } from 'react-bootstrap'
 import Hotel from '../Components/Hotel'
 //Displays all hotels and uses fuzzy search, location filter and sorting
 import Message from '../Components/Message'
@@ -22,13 +22,12 @@ const Explore = () => {
   let locationFind = useLocation()
 
   const toastItem = wishItems[0]
-  console.log(toastItem)
 
   const [query, updateQuery] = useState('');
   let [loc, setLocation] = useState('All Locations')
   const [sort, setSort] = useState('')
-  const [showA, setShowA] = useState(true);
-  const toggleShowA = () => setShowA(!showA);
+  const [show, setShow] = useState(true);
+  // const toggleShowA = () => setShowA(!showA);
 
   useEffect(() => {
     dispatch(listHotels())
@@ -146,16 +145,9 @@ const Explore = () => {
         }
         <br></br>
         {userInfo && wishItems.length!==0 &&
-    //    <Toast variant = "info" style ={{position:"sticky", bottom:"20px", left:"20px"}}>
-    //     <Toast.Header>
-    //     <img src={favicon} className="rounded me-2" alt="" />
-    //     <strong className="me-auto">nomad hotels.</strong>
-    //     <small>Analytics</small>
-    //     </Toast.Header>
-    //   <Toast.Body>We noticed you've been looking at {toastItem.name}. Currently, we are offering 15% off!</Toast.Body>
-    // </Toast>
-    <Toast show={showA} onClose={toggleShowA} style = {{position:"sticky", bottom:"20px", left:"10px", backgroundColor:"rgba(43, 69, 89, 0.8)"}}>
-          <Toast.Header>
+    // <Alert variant= "info" show={showA} onClose={toggleShowA} style = {{position:"sticky", bottom:"20px", left:"10px", backgroundColor:"rgba(43, 69, 89, 0.8)"}}>
+    //   <h2>Hello</h2>
+          /* <Toast.Header>
             <img
               src={favicon}
               className="rounded me-2"
@@ -170,11 +162,20 @@ const Explore = () => {
             <br></br>
             Use coupon code <strong>"NOMAD20OFF"</strong> for 20% off on a stay at {toastItem.name}!
           </Toast.Body>
-          </a>
-        </Toast>
-    }
+          </a> */
+        <Alert show={show} variant="warning" style = {{position:"sticky", width:"375px", bottom:"20px", left:"10px", backgroundColor:"rgba(43, 69, 89, 0.8)", padding:"20px"}}>
+        <Alert.Heading style={{fontSize:"20px"}}>Analytics</Alert.Heading>
+        <p style={{fontSize:"15px"}}>
+          We noticed you've been looking at <strong>{toastItem.name}</strong>. 
+          Use coupon code <strong>"NOMAD20OFF"</strong> for 20% off on a stay at {toastItem.name}!
+        </p>
+        <div className="d-flex justify-content-end">
+          <Button onClick={() => setShow(false)} variant="warning" style={{color:"darkslategrey"}}>Dismiss</Button>
+        </div>
+      </Alert>}
     </>
   )
 }
 
 export default Explore
+
