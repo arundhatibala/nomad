@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a031e734.chunk.css",
+    "main.js": "/static/js/main.95d96437.chunk.js",
+    "main.js.map": "/static/js/main.95d96437.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d5968ef8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d5968ef8.js.map",
+    "static/css/2.ecdd39c8.chunk.css": "/static/css/2.ecdd39c8.chunk.css",
+    "static/js/2.50b3247f.chunk.js": "/static/js/2.50b3247f.chunk.js",
+    "static/js/2.50b3247f.chunk.js.map": "/static/js/2.50b3247f.chunk.js.map",
+    "static/js/3.f992ec21.chunk.js": "/static/js/3.f992ec21.chunk.js",
+    "static/js/3.f992ec21.chunk.js.map": "/static/js/3.f992ec21.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.ecdd39c8.chunk.css.map": "/static/css/2.ecdd39c8.chunk.css.map",
+    "static/css/main.a031e734.chunk.css.map": "/static/css/main.a031e734.chunk.css.map",
+    "static/js/2.50b3247f.chunk.js.LICENSE.txt": "/static/js/2.50b3247f.chunk.js.LICENSE.txt",
+    "static/media/Amsterdam.3cb321ad.png": "/static/media/Amsterdam.3cb321ad.png",
+    "static/media/BuenosAires.0750b28f.png": "/static/media/BuenosAires.0750b28f.png",
+    "static/media/NYC.ee438e6f.png": "/static/media/NYC.ee438e6f.png",
+    "static/media/Tokyo.54604712.png": "/static/media/Tokyo.54604712.png",
+    "static/media/background.d0f21e4e.png": "/static/media/background.d0f21e4e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d5968ef8.js",
+    "static/css/2.ecdd39c8.chunk.css",
+    "static/js/2.50b3247f.chunk.js",
+    "static/css/main.a031e734.chunk.css",
+    "static/js/main.95d96437.chunk.js"
+  ]
+}
